@@ -1,61 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Hayat Hadia – Laravel-based Islamic Lifestyle Web App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Hayat Hadia (meaning Gift of Life) is a comprehensive Islamic lifestyle web application built with Laravel. It helps users track prayer times, fasting schedules, daily Quran verses, important duas, calculate Zakat, and explore Islamic guidance, all in one interactive, personalized platform.
 
-## About Laravel
+Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Prayer & Namaz Module
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Location-based prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha)
+Notifications and reminders for prayers
+Qibla compass for mobile devices
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Quran & Hadith Module
 
-## Learning Laravel
+Daily random Quran verse and Hadith of the day
+Searchable Quran and Hadith library
+Bookmark and save favorite Ayahs and Hadiths
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Fasting / Roja Module
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Ramadan schedule with Sehri and Iftar timings
+Notifications for fasting reminders
+Hijri calendar integration
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Duas & Islamic Rules Module
 
-## Laravel Sponsors
+Important and commonly used duas
+Mandatory rules, etiquettes, and regulations
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Islamic Finance Module
+Zakat calculator
 
-### Premium Partners
+Guidance on Islamic finance principles
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+User Personalization
 
-## Contributing
+Login and profile management
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Dashboard with favorites, prayer reminders, and reading streaks
+Session and cookie management for user preferences
 
-## Code of Conduct
+Technical Stack
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Backend: Laravel (MVC, Controllers, Middleware, REST API)
+Frontend: Blade templates, responsive design, JavaScript integration
+Database: MySQL/PostgreSQL (users, prayer schedules, Quran/Hadith, duas)
 
-## Security Vulnerabilities
+APIs & Integration: Prayer time API, geolocation for Qibla, AJAX / Fetch API for dynamic content
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Security & Features: CSRF protection, authentication, sessions, cookies
 
-## License
+Project Structure & Laravel Concepts Covered
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Environment Setup: Composer, project structure
+
+Artisan Commands: make:controller, make:model, make:view
+
+Routing & Controllers: Basic routing, route helpers, passing data to views
+
+Blade Templates: Syntax ({{ }}, {!! !!}), control structures, template inheritance, JavaScript integration
+
+Middleware: Request verification, redirects, header manipulation, rate limiting
+
+Database & Migrations: Schemas, indexes, foreign keys, seeding, rollback/refresh
+
+Query Builder & Eloquent ORM: CRUD operations, aggregation, joins, advanced queries
+
+REST API: Request-response handling with parameters, headers, body, file uploads, tested with Postman
+
+Installation & Setup
+
+Clone the repository:
+
+git clone https://github.com/yourusername/hayat-hadia.git
+
+
+Install dependencies via Composer:
+
+composer install
+
+
+Copy .env.example to .env and configure your database.
+
+Generate app key:
+
+php artisan key:generate
+
+
+Run migrations and seeders:
+
+php artisan migrate --seed
+
+
+Start the development server:
+
+php artisan serve
+
+
+Visit http://localhost:8000 in your browser.
+
+Screenshots / Demo (optional)
+
+
+
+License / Credits
+
+Built with ❤️ using Laravel
+
+Inspired by Islamic lifestyle apps like Muslim Pro and IslamicFinder
