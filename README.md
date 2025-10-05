@@ -2,32 +2,32 @@ Hayat Hadia – Laravel-based Islamic Lifestyle Web App
 
 Hayat Hadia (meaning Gift of Life) is a comprehensive Islamic lifestyle web application built with Laravel. It helps users track prayer times, fasting schedules, daily Quran verses, important duas, calculate Zakat, and explore Islamic guidance, all in one interactive, personalized platform.
 
-Features
+#Features
 
-Prayer & Namaz Module
+1.Prayer & Namaz Module
 
 Location-based prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha)
 Notifications and reminders for prayers
 Qibla compass for mobile devices
 
-Quran & Hadith Module
+2.Quran & Hadith Module
 
 Daily random Quran verse and Hadith of the day
 Searchable Quran and Hadith library
 Bookmark and save favorite Ayahs and Hadiths
 
-Fasting / Roja Module
+3.Fasting / Roja Module
 
 Ramadan schedule with Sehri and Iftar timings
 Notifications for fasting reminders
 Hijri calendar integration
 
-Duas & Islamic Rules Module
+4.Duas & Islamic Rules Module
 
 Important and commonly used duas
 Mandatory rules, etiquettes, and regulations
 
-Islamic Finance Module
+5.Islamic Finance Module
 Zakat calculator
 
 Guidance on Islamic finance principles
