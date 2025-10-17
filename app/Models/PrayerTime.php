@@ -21,6 +21,8 @@ class PrayerTime extends Model
         'asr',
         'maghrib',
         'isha',
+        'midnight',
+        'qiyam',
         'calculation_source',
         'adjustments',
     ];
@@ -34,6 +36,8 @@ class PrayerTime extends Model
         'asr' => 'datetime:H:i',
         'maghrib' => 'datetime:H:i',
         'isha' => 'datetime:H:i',
+        'midnight' => 'datetime:H:i',
+        'qiyam' => 'datetime:H:i',
         'adjustments' => 'array',
     ];
 

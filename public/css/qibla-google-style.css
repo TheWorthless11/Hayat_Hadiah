@@ -1,0 +1,1122 @@
+/* ========================================
+   QIBLA COMPASS - GOOGLE QIBLA FINDER STYLE
+   Professional Animation: Moon → Compass → Pin
+   ======================================== */
+
+/* Page Header */
+.qibla-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+}
+
+.qibla-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #053939;
+    margin-bottom: 0.5rem;
+}
+
+.dark .qibla-title {
+    color: #5eead4;
+}
+
+.qibla-subtitle {
+    font-size: 1.1rem;
+    color: #0c5d51;
+}
+
+.dark .qibla-subtitle {
+    color: #99f6e4;
+}
+
+/* ==================== MAIN ANIMATION STRUCTURE ==================== */
+.compass-section {
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.intro-animation {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.pin-animation {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==================== PIN GLOW EFFECT ==================== */
+.pin-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(15, 118, 110, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: glowPulse 2s 5s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+.dark .pin-glow {
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.3) 0%, transparent 70%);
+}
+
+/* ==================== LANDING ANIMATIONS ==================== */
+.landing-move {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: landingMove 6s ease-in-out forwards;
+}
+
+@keyframes landingMove {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.landing-squeeze {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: landingSqueeze 6s ease-in-out forwards;
+}
+
+@keyframes landingSqueeze {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1.05);
+    }
+    35% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ==================== WELCOME ANIMATION CONTAINER ==================== */
+.welcome-animation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==================== PHASE 1: MOON/CIRCLE ==================== */
+.hider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.moon-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    animation: moonWrapperAnim 6s ease-in-out forwards;
+}
+
+@keyframes moonWrapperAnim {
+    0% {
+        opacity: 1;
+        transform: scale(0) rotate(0deg);
+    }
+    15% {
+        opacity: 1;
+        transform: scale(1.1) rotate(0deg);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1) rotate(90deg);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(0.8) rotate(180deg);
+        visibility: hidden;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.moon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 
+        0 0 20px rgba(15, 118, 110, 0.3),
+        0 0 40px rgba(15, 118, 110, 0.2),
+        inset 0 0 20px rgba(15, 118, 110, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: moonPulse 2.5s ease-in-out;
+}
+
+@keyframes moonPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(15, 118, 110, 0.3),
+            0 0 40px rgba(15, 118, 110, 0.2),
+            inset 0 0 20px rgba(15, 118, 110, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(15, 118, 110, 0.5),
+            0 0 60px rgba(15, 118, 110, 0.3),
+            inset 0 0 30px rgba(15, 118, 110, 0.2);
+    }
+}
+
+.dark .moon {
+    background: #e0f2f1;
+    box-shadow: 
+        0 0 20px rgba(94, 234, 212, 0.4),
+        0 0 40px rgba(94, 234, 212, 0.3),
+        inset 0 0 20px rgba(94, 234, 212, 0.2);
+}
+
+/* Compass Marks around Moon */
+.compass-marks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    animation: marksAppear 3s 1.5s ease-in-out forwards;
+}
+
+@keyframes marksAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.8);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(720deg) scale(0.8);
+        visibility: hidden;
+    }
+}
+
+.marks-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.dark .marks-svg line {
+    stroke: #5eead4;
+}
+
+.dark .marks-svg line[stroke="#dc2626"] {
+    stroke: #ef4444;
+}
+
+.dark .marks-svg text {
+    fill: #5eead4;
+}
+
+.dark .marks-svg text[fill="#dc2626"] {
+    fill: #ef4444;
+}
+
+/* ==================== PHASE 2 & 3: SPIN CONTAINER ==================== */
+.spin-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 280px;
+    z-index: 2;
+}
+
+.spin-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: spinEntry 6s ease-in-out forwards;
+}
+
+@keyframes spinEntry {
+    0%, 50% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.1) rotate(0deg);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ==================== PHASE 2: COMPASS ==================== */
+.compass-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    opacity: 0;
+    animation: compassPhase 6s ease-in-out forwards;
+}
+
+@keyframes compassPhase {
+    0%, 50% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    75% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    }
+    85% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotate(720deg);
+        visibility: hidden;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.compass-element {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.compass-image {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 12px rgba(15, 118, 110, 0.3));
+}
+
+.dark .compass-image circle[stroke="#0f766e"] {
+    stroke: #5eead4;
+}
+
+.dark .compass-image circle[fill*="240, 253, 250"] {
+    fill: rgba(13, 77, 71, 0.8);
+}
+
+.needle-group {
+    transform-origin: center;
+    animation: needleRotate 2s 3.5s ease-in-out;
+}
+
+@keyframes needleRotate {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==================== PHASE 3: PIN ==================== */
+.pin-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 170px;
+    opacity: 0;
+    animation: pinDrop 6s ease-in-out forwards;
+    z-index: 3;
+}
+
+@keyframes pinDrop {
+    0%, 75% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-200px) scale(0.5);
+    }
+    85% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(20px) scale(1.1);
+    }
+    92% {
+        transform: translateX(-50%) translateY(-10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* Continuous floating after landing */
+@keyframes pinFloat {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-8px) scale(1);
+    }
+}
+
+.pin-svg {
+    animation: pinDrop 6s ease-in-out forwards, pinFloat 3s 6s ease-in-out infinite;
+}
+
+.dark .pin-svg path {
+    filter: drop-shadow(0 6px 16px rgba(94, 234, 212, 0.4));
+}
+
+/* ==================== MECCA/KAABA CONTAINER ==================== */
+.mecca-container {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    animation: meccaAppear 6s ease-in-out forwards;
+    z-index: 4;
+}
+
+@keyframes meccaAppear {
+    0%, 85% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+    92% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.mecca-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(4px);
+    z-index: 1;
+}
+
+.mecca-icon {
+    position: relative;
+    font-size: 2.8rem;
+    z-index: 2;
+    animation: meccaGlow 2s 6s ease-in-out infinite;
+}
+
+@keyframes meccaGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(15, 118, 110, 0.6));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 16px rgba(15, 118, 110, 0.9));
+        transform: scale(1.05);
+    }
+}
+
+.dark .mecca-icon {
+    filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.6));
+}
+
+/* ==================== QIBLA DIRECTION INDICATOR ==================== */
+.qibla-direction-indicator {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: directionAppear 6s ease-in-out forwards;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+@keyframes directionAppear {
+    0%, 90% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.direction-arrow-modern {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 50px solid #0f766e;
+    filter: drop-shadow(0 4px 12px rgba(15, 118, 110, 0.5));
+    animation: arrowPulse 2s 6s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(-50%) translateY(-8px) scale(0.95);
+    }
+}
+
+.dark .direction-arrow-modern {
+    border-bottom-color: #5eead4;
+    filter: drop-shadow(0 4px 12px rgba(94, 234, 212, 0.5));
+}
+
+/* ==================== PIN SHADOW ==================== */
+.pin-shadow-container {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    opacity: 0;
+    animation: shadowAppear 6s ease-in-out forwards, shadowPulse 3s 6s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes shadowAppear {
+    0%, 85% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+.pin-shadow {
+    width: 100%;
+    height: 100%;
+}
+
+/* ==================== DEGREE DISPLAY ==================== */
+.degree-display {
+    text-align: center;
+    margin-top: 2rem;
+    animation: degreeAppear 6s ease-in-out forwards;
+}
+
+@keyframes degreeAppear {
+    0%, 95% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.degree-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0f766e;
+    margin-bottom: 0.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+.dark .degree-value {
+    color: #5eead4;
+}
+
+.degree-label {
+    font-size: 1rem;
+    color: #0c5d51;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dark .degree-label {
+    color: #99f6e4;
+}
+
+/* ==================== LOCATION INFO CARDS ==================== */
+.location-info-section {
+    margin-bottom: 3rem;
+    animation: infoCardsAppear 6s ease-in-out forwards;
+}
+
+@keyframes infoCardsAppear {
+    0%, 95% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.location-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+    border: 2px solid #14b8a6;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .info-card {
+    background: linear-gradient(135deg, #0d4d47 0%, #053939 100%);
+    border-color: #5eead4;
+    box-shadow: 0 4px 15px rgba(94, 234, 212, 0.2);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(20, 184, 166, 0.3);
+}
+
+.dark .info-card:hover {
+    box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+}
+
+.info-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.info-card-title {
+    font-size: 0.9rem;
+    color: #0c5d51;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.dark .info-card-title {
+    color: #99f6e4;
+}
+
+.info-card-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0f766e;
+}
+
+.dark .info-card-value {
+    color: #5eead4;
+}
+
+/* ==================== ACTION BUTTONS ==================== */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0d6458 0%, #053329 100%);
+    box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: white;
+    color: #0f766e;
+    border: 2px solid #0f766e;
+}
+
+.dark .btn-secondary {
+    background: #053939;
+    color: #5eead4;
+    border-color: #5eead4;
+}
+
+.btn-secondary:hover {
+    background: #f0fdfa;
+    transform: translateY(-2px);
+}
+
+.dark .btn-secondary:hover {
+    background: #0d4d47;
+}
+
+/* ==================== SAVED LOCATIONS PANEL ==================== */
+.saved-locations-section {
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.saved-locations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.saved-locations-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0f766e;
+}
+
+.dark .saved-locations-title {
+    color: #5eead4;
+}
+
+.saved-locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.saved-location-card {
+    background: white;
+    border: 2px solid #14b8a6;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.dark .saved-location-card {
+    background: #053939;
+    border-color: #5eead4;
+    box-shadow: 0 4px 15px rgba(94, 234, 212, 0.15);
+}
+
+.saved-location-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(20, 184, 166, 0.25);
+}
+
+.dark .saved-location-card:hover {
+    box-shadow: 0 8px 20px rgba(94, 234, 212, 0.25);
+}
+
+.location-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.location-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f766e;
+}
+
+.dark .location-name {
+    color: #5eead4;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+.location-details {
+    font-size: 0.9rem;
+    color: #0c5d51;
+    margin-bottom: 0.5rem;
+}
+
+.dark .location-details {
+    color: #99f6e4;
+}
+
+.location-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-load {
+    background: #0f766e;
+    color: white;
+}
+
+.btn-load:hover {
+    background: #0d6458;
+}
+
+.btn-delete {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #b91c1c;
+}
+
+/* ==================== MODAL ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.dark .modal-content {
+    background: #053939;
+    border: 2px solid #5eead4;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0f766e;
+}
+
+.dark .modal-title {
+    color: #5eead4;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #0f766e;
+}
+
+.dark .modal-close {
+    color: #5eead4;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: #0c5d51;
+    margin-bottom: 0.5rem;
+}
+
+.dark .form-label {
+    color: #99f6e4;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #14b8a6;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.dark .form-input {
+    background: #0d4d47;
+    border-color: #5eead4;
+    color: #e0f2f1;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #0f766e;
+}
+
+.dark .form-input:focus {
+    border-color: #99f6e4;
+}
+
+.form-checkbox {
+    margin-right: 0.5rem;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .qibla-title {
+        font-size: 2rem;
+    }
+
+    .intro-animation {
+        height: 350px;
+    }
+
+    .pin-animation {
+        width: 250px;
+        height: 300px;
+    }
+
+    .moon-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .moon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .compass-marks {
+        width: 170px;
+        height: 170px;
+    }
+
+    .compass-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .pin-svg {
+        width: 110px;
+        height: 150px;
+    }
+
+    .mecca-container {
+        top: 28px;
+    }
+
+    .mecca-icon {
+        font-size: 2.3rem;
+    }
+
+    .degree-value {
+        font-size: 2.5rem;
+    }
+
+    .location-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .saved-locations-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .qibla-title {
+        font-size: 1.75rem;
+    }
+
+    .intro-animation {
+        height: 300px;
+    }
+
+    .pin-animation {
+        width: 200px;
+        height: 250px;
+    }
+
+    .moon-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+
+    .moon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .compass-marks {
+        width: 150px;
+        height: 150px;
+    }
+
+    .compass-container {
+        width: 130px;
+        height: 130px;
+    }
+
+    .pin-svg {
+        width: 90px;
+        height: 130px;
+    }
+
+    .mecca-container {
+        top: 24px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .mecca-icon {
+        font-size: 1.8rem;
+    }
+
+    .direction-arrow-modern {
+        border-left-width: 14px;
+        border-right-width: 14px;
+        border-bottom-width: 40px;
+    }
+}

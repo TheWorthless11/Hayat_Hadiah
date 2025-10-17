@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Seed locations and Kaaba data
+        $this->call([
+            LocationSeeder::class,
+            KaabaLocationSeeder::class,
+            QuranSeeder::class,
+            ExpandedHadithSeeder::class,  // Updated to use expanded hadith collection
+        ]);
     }
 }

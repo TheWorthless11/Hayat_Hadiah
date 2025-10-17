@@ -1,0 +1,792 @@
+/* ========================================
+   RESET AND BASE STYLES
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full height for html and body */
+html, body {
+    height: 100%;
+}
+
+/* Main body styling with gradient background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+    min-height: 100vh;
+    background-color: #0d7e92;
+    background-attachment: fixed;
+    transition: all 0.3s ease;
+}
+
+/* Dark mode body styling */
+.dark body {
+    color: #f3f4f6;
+    background-color: linear-gradient(180deg, #26b6c6 30%, #29b7c7 30%, #4dd0e1 70%, #b7dbd6 95%, #e3dcce 100%);
+    background-attachment: fixed;
+}
+
+/* ========================================
+   NAVIGATION BAR
+   ======================================== */
+/* Main navigation with deep gradient matching buttons */
+nav {
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(6, 95, 70, 0.95), rgba(6, 78, 59, 0.95));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Dark mode navigation */
+.dark nav {
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.95), rgba(5, 59, 47, 0.95), rgba(4, 47, 36, 0.95));
+    backdrop-filter: blur(10px);
+}
+
+/* Navigation container layout */
+nav .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+/* Logo styling */
+nav .logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark nav .logo {
+    color: #ffffff;
+}
+
+/* Navigation links container */
+nav .nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Navigation link styling */
+nav a {
+    color: #e0f7fa;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Navigation link hover effect */
+nav a:hover {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.dark nav a {
+    color: #e0f7fa;
+}
+
+.dark nav a:hover {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   MAIN CONTENT AREA
+   ======================================== */
+/* Main content with background pattern and gradient */
+main {
+    padding: 2rem 0;
+    padding-bottom: 6rem;  /* Space for fixed footer */
+    min-height: 100vh;
+    background: 
+   url('data:image/svg+xml,%3Csvg width="80" height="80" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73z" fill="none" stroke="%23FFFFFF" stroke-opacity="0.3" stroke-width="1"/%3E%3C/svg%3E') repeat,
+        linear-gradient(180deg, 
+            #26b6c6 30%, 
+            #29b7c7 30%, 
+            #4dd0e1 70%, 
+            #b7dbd6 95%, 
+            #e3dcce 100%);
+}
+
+/* Main container - controls overall page width */
+.container {
+    max-width: 95%;  /* Adjust this to make page wider/narrower */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ========================================
+   FLOATING THEME TOGGLE BUTTON
+   ======================================== */
+/* Fixed position sun/moon toggle button at top-right */
+.theme-btn-floating {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);  /* Deep dark gradient matching navbar */
+    color: white;
+    width: 3.5rem;  /* Button size */
+    height: 3.5rem;
+    border: none;
+    border-radius: 50%;  /* Makes it circular */
+    cursor: pointer;
+    font-size: 1.5rem;  /* Icon size */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;  /* Keeps it above other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effect: scales up and rotates */
+.theme-btn-floating:hover {
+    transform: scale(1.1) rotate(15deg);
+    background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);  /* Even darker on hover */
+    box-shadow: 0 12px 32px rgba(6, 95, 70, 0.5);
+}
+
+/* ========================================
+   TOP SECTION - 2 COLUMN LAYOUT
+   ======================================== */
+/* Container for location/date info - ADJUST COLUMN WIDTHS HERE */
+.top-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;  /* Left column wider (2x), right column smaller (1x) */
+    gap: 4rem;  /* More space between left and right columns */
+    margin-bottom: 3rem;  /* Space below this section */
+}
+
+/* ========================================
+   INFO BOXES (Left & Right Columns)
+   ======================================== */
+/* Transparent container for info sections */
+.info-box {
+    background: transparent;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+}
+
+.dark .info-box {
+    background: transparent;
+}
+
+/* ========================================
+   LEFT COLUMN - Location & Search
+   ======================================== */
+/* "PRAYER TIME IN" label */
+.info-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0c5d51;
+}
+
+.dark .info-label {
+    color: #0c5d51;
+}
+
+/* City and country name (e.g., "Dhaka, Bangladesh") */
+.info-location {
+    font-size: 2rem;  /* City name size */
+    font-weight: bold;
+    color: #053939;
+}
+
+.dark .info-location {
+    color: #053939;
+}
+
+/* Search section container */
+.search-section {
+    margin-top: 1rem;
+}
+
+/* Search label (currently not used) */
+.search-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color:  #0c5d51;
+    margin-bottom: 0.75rem;
+}
+
+.dark .search-label {
+    color: #297066;
+}
+
+/* City dropdown search box */
+.location-search {
+    width: 25%;  /* Adjust dropdown width here */
+    padding: 0.5rem;
+    border: 2px solid #5eead4;
+    border-radius: 1.5rem;
+    background-color: white;
+    color: #1f2937;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.dark .location-search {
+    background-color: #374151;
+    color: #e5e7eb;
+    border-color: #0d9488;
+}
+
+/* Auto-detect location button */
+.btn-detect {
+    width: 25%;  /* Adjust button width here */
+    padding: 0.5rem;
+    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);  /* Deep gradient */
+    color: white;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Auto-detect button hover - even darker */
+.btn-detect:hover {
+    background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.5);
+}
+
+/* ========================================
+   RIGHT COLUMN - Date & Settings
+   ======================================== */
+/* Day name (e.g., "Wednesday") */
+.info-date {
+    font-size: 1.25rem;  /* Smaller day name size */
+    font-weight: bold;
+    color: #053939;
+    margin-bottom: 0.5rem;
+}
+
+.dark .info-date {
+    color: #053939;
+}
+
+/* Full date (e.g., "October 16, 2025") */
+.info-date-full {
+    font-size: 0.75rem;  /* Smaller date size */
+    color: #0c5d51;
+    margin-bottom: .5rem;
+}
+
+.dark .info-date-full {
+    color: #0c5d51;
+}
+
+/* ========================================
+   SETTINGS FORM (Calculation dropdowns)
+   ======================================== */
+/* Container for both dropdown boxes - SIDE BY SIDE */
+.settings-form {
+    display: flex;
+    flex-direction: row;  /* Change to 'column' for vertical stacking */
+    gap: 0.5rem;  /* Smaller space between dropdowns */
+    align-items: flex-start;
+    margin-top: 0.75rem;
+}
+
+/* Individual setting group (each dropdown container) */
+.setting-group {
+    flex: 1;  /* Each dropdown takes equal width */
+}
+
+/* Labels (Calculation Method, School) - currently removed from HTML */
+.setting-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0c5d51;
+    margin-bottom: 0.5rem;
+}
+
+.dark .setting-group label {
+    color: #0c5d51;
+}
+
+/* Dropdown select boxes */
+.setting-group select {
+    width: 100%;  /* Takes full width of its container */
+    padding: 0.35rem;  /* Smaller padding */
+    border: 2px solid #5eead4;
+    border-radius: 1rem;  /* Slightly less rounded */
+    background-color: white;
+    color: #1f2937;
+    font-size: 0.75rem;  /* Smaller font size */
+    transition: all 0.3s ease;
+}
+
+.dark .setting-group select {
+    background-color: #374151;
+    color: #e5e7eb;
+    border-color: #0d9488;
+}
+
+/* Cards */
+.card {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.dark .card {
+    background-color: rgba(31, 41, 55, 0.75);
+    backdrop-filter: blur(10px);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-header {
+    background: linear-gradient(to right, #14b8a6, #06b6d4);
+    color: white;
+    padding: 1rem 1.5rem;
+}
+
+.dark .card-header {
+    background: linear-gradient(to right, #0f766e, #0e7490);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.card-subtitle {
+    color: #ccfbf1;
+    font-size: 0.875rem;
+}
+
+/* Form Elements */
+label {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #115e59;
+}
+
+.dark label {
+    color: #5eead4;
+}
+
+select, input[type="text"] {
+    width: 40%;
+    padding: 0.75rem;
+    border: 2px solid #5eead4;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: #1f2937;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+select:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+}
+
+.dark select, .dark input[type="text"] {
+    background-color: #374151;
+    color: #e5e7eb;
+    border-color: #0d9488;
+}
+
+.dark select:focus, .dark input[type="text"]:focus {
+    border-color: #14b8a6;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    width: 40%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+     /* Adjust this value to change button width */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   PRAYER GRID - MAIN PRAYER TIMES
+   ======================================== */
+/* Grid container for all prayer cards - ADJUST COLUMNS HERE */
+.prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);  /* 8 cards in a row (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha, Midnight, Qiyam) */
+    gap: 1rem;  /* Space between cards */
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Individual prayer card styling */
+.prayer-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75));
+    backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+    padding: 1.5rem 0.75rem;  /* Vertical and horizontal padding */
+    min-height: 120px;  /* ADJUST CARD HEIGHT HERE */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border: 2px solid rgba(20, 184, 166, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Prayer card in dark mode */
+.dark .prayer-card {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.85), rgba(31, 41, 55, 0.75));
+    border-color: rgba(94, 234, 212, 0.2);
+}
+
+/* Container for prayer name and time inside each card */
+.prayer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* Aligns items to the left */
+    width: 100%;
+    gap: 0.5rem;
+}
+
+/* ========================================
+   CURRENT PRAYER HIGHLIGHT
+   ======================================== */
+/* Active/current prayer styling - SAME COLOR AS BUTTONS */
+.prayer-card.current {
+    transform: scale(1.15) translateY(-10px);  /* Makes it bigger and lifts it up */
+    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);  /* Deep gradient matching buttons */
+    border-color: #064e3b;
+    box-shadow: 0 12px 40px rgba(6, 95, 70, 0.6);  /* Glowing shadow */
+    z-index: 10;  /* Keeps it above other cards */
+}
+
+/* Current prayer in dark mode */
+.dark .prayer-card.current {
+    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);
+    border-color: #5eead4;
+}
+
+/* Make text white in current prayer */
+.prayer-card.current .prayer-name,
+.prayer-card.current .prayer-time {
+    color: white !important;
+}
+
+/* Icon styling in current prayer */
+.prayer-card.current .prayer-icon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+/* Prayer card hover effect */
+.prayer-card:hover {
+    transform: translateY(-5px);  /* Lifts up slightly */
+    box-shadow: 0 8px 32px rgba(20, 184, 166, 0.3);
+    border-color: rgba(20, 184, 166, 0.5);
+}
+
+/* Current prayer card hover */
+.prayer-card.current:hover {
+    transform: scale(1.15) translateY(-12px);  /* Lifts even higher */
+}
+
+.dark .prayer-card:hover {
+    border-color: rgba(94, 234, 212, 0.5);
+}
+
+/* ========================================
+   PRAYER CARD CONTENT
+   ======================================== */
+/* Prayer icon (emoji) - currently not used in HTML */
+.prayer-icon {
+    font-size: 0.9rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transition: all 0.4s ease;
+}
+
+/* Prayer name text (FAJR, DHUHR, etc.) */
+.prayer-name {
+    font-size: 0.9rem;  /* Prayer name size */
+    font-weight: 600;
+    color: #0c5d51;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    width: 100%;
+}
+
+.dark .prayer-name {
+    color: #5eead4;
+}
+
+/* Prayer time text (5:30 AM, etc.) */
+.prayer-time {
+    font-size: 1.75rem;  /* Time size - ADJUST HERE */
+    font-weight: bold;
+    color: #053939;
+    font-family: 'Courier New', monospace;  /* Monospace font for times */
+    text-align: left;
+    width: 100%;
+}
+
+.dark .prayer-time {
+    color: #6ee7b7;
+}
+
+/* Utility Classes */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* ========================================
+   COPYRIGHT FOOTER
+   ======================================== */
+/* Footer at the bottom of the page - full width with navbar styling, fixed to bottom */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(6, 95, 70, 0.95), rgba(6, 78, 59, 0.95));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dark .footer {
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.95), rgba(5, 59, 47, 0.95), rgba(4, 47, 36, 0.95));
+    backdrop-filter: blur(10px);
+}
+
+.footer p {
+    margin: 0.25rem 0;
+    color: #e0f7fa;
+}
+
+.footer .copyright-year {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.footer .developer-name {
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .footer .developer-name {
+    color: #ffffff;
+}
+
+/* ========================================
+   ALERT MESSAGES
+   ======================================== */
+/* Alert container base styling */
+.alert {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Error alert (red) */
+.alert-error {
+    background-color: rgba(239, 68, 68, 0.95);
+    color: white;
+}
+
+.dark .alert-error {
+    background-color: rgba(185, 28, 28, 0.95);
+}
+
+/* Warning alert (yellow) */
+.alert-warning {
+    background-color: rgba(234, 179, 8, 0.95);
+    color: white;
+}
+
+.dark .alert-warning {
+    background-color: rgba(161, 98, 7, 0.95);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+/* Tablet and smaller screens (1024px and below) */
+@media (max-width: 1024px) {
+    /* Stack top section vertically */
+    .top-section {
+        grid-template-columns: 1fr;  /* Single column */
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Show 4 prayer cards per row */
+    .prayer-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+/* Mobile screens (640px and below) */
+@media (max-width: 640px) {
+    /* Show 2 prayer cards per row */
+    .prayer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    /* Smaller prayer card padding */
+    .prayer-card {
+        padding: 0.5rem;
+    }
+
+    /* Smaller icon size */
+    .prayer-icon {
+        font-size: 2rem;
+    }
+
+    /* Smaller prayer name */
+    .prayer-name {
+        font-size: 0.6rem;
+    }
+
+    /* Smaller time text */
+    .prayer-time {
+        font-size: 1.25rem;
+    }
+
+    /* Less dramatic current prayer highlight on mobile */
+    .prayer-card.current {
+        transform: scale(1.08) translateY(-5px);
+    }
+    
+    /* Smaller info box padding */
+    .info-box {
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Smaller theme button on mobile */
+    .theme-btn-floating {
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================
+   CUSTOMIZATION GUIDE
+   ======================================== */
+/* 
+KEY AREAS TO CUSTOMIZE:
+
+1. Column Widths (Line ~185):
+   .top-section { grid-template-columns: 1fr 1fr; }
+   - Change to "2fr 1fr" for wider left column
+   - Change to "1fr 2fr" for wider right column
+
+2. Prayer Card Height (Line ~323):
+   .prayer-card { min-height: 120px; }
+   - Increase for taller cards
+   - Decrease for shorter cards
+
+3. Number of Prayer Cards per Row (Line ~312):
+   .prayer-grid { grid-template-columns: repeat(8, 1fr); }
+   - Change 8 to different number for more/fewer cards per row
+
+4. Prayer Time Font Size (Line ~436):
+   .prayer-time { font-size: 1.75rem; }
+   - Increase for larger times
+   - Decrease for smaller times
+
+5. Location Dropdown Width (Line ~216):
+   .location-search { width: 40%; }
+   - Adjust percentage to make wider/narrower
+
+6. Auto-Detect Button Width (Line ~227):
+   .btn-detect { width: 40%; }
+   - Adjust percentage to match search box
+
+7. Background Gradient Colors (Line ~25):
+   - Edit gradient colors for different color scheme
+   - Pattern opacity in SVG URL
+
+To customize colors:
+1. Light mode: Edit line 16 - change body background-color
+2. Dark mode: Edit line 24 - change gradient colors
+3. Buttons: Edit lines ~228, ~380 for gradient colors
+4. Prayer cards: Edit line ~324 for card background
+*/

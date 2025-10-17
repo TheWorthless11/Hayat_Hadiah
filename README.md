@@ -4,33 +4,60 @@ Hayat Hadia (meaning Gift of Life) is a comprehensive Islamic lifestyle web appl
 
 #Features
 
-1.Prayer & Namaz Module
+1. Prayer & Namaz Module
 
-Location-based prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha)
+Location-based prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha, Midnight, Qiyam)
+Multiple calculation methods (Muslim World League, ISNA, Egyptian, Karachi, Umm Al-Qura)
+Hanafi and Standard Asr calculation schools
+Auto-detect location via GPS
+City search with 25+ worldwide locations
 Notifications and reminders for prayers
-Qibla compass for mobile devices
+Dark/Light theme toggle
 
-2.Quran & Hadith Module
+2. Qibla Compass Module
+
+Real-time Qibla direction finder using geolocation
+Visual compass with degree indication
+Distance to Kaaba from current location
+Works on mobile and desktop devices
+Accurate direction calculation using geographical coordinates
+Save favorite locations for quick access
+
+3. Quran & Hadith Module
 
 Daily random Quran verse and Hadith of the day
 Searchable Quran and Hadith library
 Bookmark and save favorite Ayahs and Hadiths
+Surah-by-Surah navigation
+Translation support (multiple languages)
+Audio recitation integration
 
-3.Fasting / Roja Module
+4. Fasting / Roja Module
 
 Ramadan schedule with Sehri and Iftar timings
 Notifications for fasting reminders
 Hijri calendar integration
+Voluntary fasting tracker (Mondays, Thursdays, White Days)
+Fasting intention reminders
+Historical fasting records
 
-4.Duas & Islamic Rules Module
+5. Duas & Islamic Rules Module
 
-Important and commonly used duas
+Important and commonly used duas (morning, evening, travel, etc.)
+Duas organized by category and occasion
 Mandatory rules, etiquettes, and regulations
+Daily dua reminders
+Arabic text with transliteration and translation
+Audio pronunciation guide
 
-5.Islamic Finance Module
-Zakat calculator
+6. Islamic Finance / Zakat Module
 
+Zakat calculator (gold, silver, cash, business assets)
+Nisab threshold calculator
+Track Zakat payments and records
 Guidance on Islamic finance principles
+Sadaqah tracker
+Financial planning according to Shariah
 
 User Personalization
 

@@ -35,6 +35,8 @@ return new class extends Migration
             $table->time('asr');
             $table->time('maghrib');
             $table->time('isha');
+            $table->time('midnight')->nullable();
+            $table->time('qiyam')->nullable()->comment('Last third of night - best time for Tahajjud');
             $table->string('calculation_source')->nullable();
             $table->json('adjustments')->nullable();
             $table->timestamps();

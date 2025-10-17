@@ -45,4 +45,36 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the user's saved Qibla locations
+     */
+    public function savedQiblaLocations()
+    {
+        return $this->hasMany(SavedQiblaLocation::class);
+    }
+
+    /**
+     * Get the user's favorite Qibla locations
+     */
+    public function favoriteQiblaLocations()
+    {
+        return $this->hasMany(SavedQiblaLocation::class)->where('is_favorite', true);
+    }
+
+    /**
+     * Get the user's Qibla compass usage logs
+     */
+    public function qiblaCompassLogs()
+    {
+        return $this->hasMany(QiblaCompassLog::class);
+    }
+
+    /**
+     * Get the user's prayer preferences
+     */
+    public function prayerPreferences()
+    {
+        return $this->hasOne(UserPrayerPreference::class);
+    }
 }
