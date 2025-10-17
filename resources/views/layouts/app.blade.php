@@ -19,6 +19,7 @@
                 <a href="/quran">📖 Quran</a>
                 <a href="/hadith">📚 Hadith</a>
                 <a href="/fasting">🌙 Fasting</a>
+                <a href="/zakat">💰 Zakat</a>
             </div>
         </div>
     </nav>

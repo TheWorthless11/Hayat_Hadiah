@@ -11,6 +11,7 @@ use App\Http\Controllers\QiblaController;
 use App\Http\Controllers\QuranController;
 use App\Http\Controllers\HadithController;
 use App\Http\Controllers\FastingController;
+use App\Http\Controllers\ZakatController;
 
 // Prayer Times Module
 Route::get('/prayers', [PrayerController::class, 'index'])->name('prayers.index');
@@ -42,3 +43,7 @@ Route::get('/hadith-random', [HadithController::class, 'random'])->name('hadith.
 // Fasting Module
 Route::get('/fasting', [FastingController::class, 'index'])->name('fasting.index');
 Route::post('/fasting/generate', [FastingController::class, 'generate'])->name('fasting.generate');
+
+// Zakat Module
+Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
+Route::post('/zakat/calculate', [ZakatController::class, 'calculate'])->name('zakat.calculate');

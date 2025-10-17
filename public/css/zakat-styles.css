@@ -1,0 +1,10 @@
+/* Zakat module styles */
+.zakat-container { max-width: 1000px; margin: 2rem auto; padding: 1rem; }
+.zakat-card, .results-card { background:#fff; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.06); padding:1.25rem; margin-bottom:1rem; }
+.grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; }
+.field { display:flex; flex-direction:column; gap:.5rem; }
+.field input, .field select { padding:.6rem .8rem; border:1px solid #e2e8f0; border-radius:8px; }
+.actions { margin-top:1rem; }
+.btn-primary { background: linear-gradient(135deg, #0f766e, #14b8a6); color:#fff; border:none; padding:.75rem 1rem; border-radius:10px; cursor:pointer; }
+.muted { color:#64748b; }
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
