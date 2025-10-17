@@ -154,11 +154,16 @@
             const now = new Date();
             const currentTime = now.getHours() * 60 + now.getMinutes(); // Current time in minutes
             
+            const prayerGrid = document.querySelector('.prayer-grid');
             const prayerCards = document.querySelectorAll('.prayer-card');
-            let currentPrayer = null;
+            let currentPrayerCard = null;
             let nextPrayerTime = Infinity;
 
-            // Convert prayer times to minutes and find current prayer
+            // Clear previous state
+            prayerCards.forEach(card => card.classList.remove('current'));
+            prayerGrid.classList.remove('has-current');
+
+            // Find which prayer is the current one
             prayerCards.forEach(card => {
                 const timeStr = card.getAttribute('data-time');
                 if (!timeStr) return;
@@ -166,25 +171,23 @@
                 const [hours, minutes] = timeStr.split(':').map(Number);
                 const prayerTimeInMinutes = hours * 60 + minutes;
 
-                // If this prayer time has passed and is closer than the next one
                 if (prayerTimeInMinutes <= currentTime) {
-                    if (!currentPrayer || prayerTimeInMinutes > nextPrayerTime) {
-                        if (currentPrayer) currentPrayer.classList.remove('current');
-                        currentPrayer = card;
+                    if (!currentPrayerCard || prayerTimeInMinutes > nextPrayerTime) {
+                        currentPrayerCard = card;
                         nextPrayerTime = prayerTimeInMinutes;
                     }
                 }
             });
 
-            // If no prayer has passed yet, highlight the first one (likely Fajr from previous day logic)
-            if (!currentPrayer && prayerCards.length > 0) {
-                currentPrayer = prayerCards[prayerCards.length - 1]; // Last prayer (Qiyam or Isha)
+            // If it's before the first prayer of the day, the last prayer of yesterday is current
+            if (!currentPrayerCard && prayerCards.length > 0) {
+                currentPrayerCard = prayerCards[prayerCards.length - 1];
             }
 
-            // Apply current class
-            prayerCards.forEach(card => card.classList.remove('current'));
-            if (currentPrayer) {
-                currentPrayer.classList.add('current');
+            // Apply 'current' class to the card and 'has-current' to the grid
+            if (currentPrayerCard) {
+                currentPrayerCard.classList.add('current');
+                prayerGrid.classList.add('has-current');
             }
         }
 

@@ -153,7 +153,7 @@ main {
     background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);  /* Even darker on hover */
     box-shadow: 0 12px 32px rgba(6, 95, 70, 0.5);
 }
-
+/* pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp */
 /* ========================================
    TOP SECTION - 2 COLUMN LAYOUT
    ======================================== */
@@ -161,8 +161,9 @@ main {
 .top-section {
     display: grid;
     grid-template-columns: 2fr 1fr;  /* Left column wider (2x), right column smaller (1x) */
-    gap: 4rem;  /* More space between left and right columns */
-    margin-bottom: 3rem;  /* Space below this section */
+    gap: 2rem;  /* Space between left and right columns */
+    margin-bottom: 2rem;  /* Space below this section */
+    align-items: start;  /* Align items to the top */
 }
 
 /* ========================================
@@ -172,7 +173,7 @@ main {
 .info-box {
     background: transparent;
     border-radius: 1rem;
-    padding: 2rem 1.5rem;
+    padding: 0rem 1.5rem;
 }
 
 .dark .info-box {
@@ -184,7 +185,7 @@ main {
    ======================================== */
 /* "PRAYER TIME IN" label */
 .info-label {
-    font-size: 0.875rem;
+    font-size: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: #0c5d51;
@@ -196,7 +197,7 @@ main {
 
 /* City and country name (e.g., "Dhaka, Bangladesh") */
 .info-location {
-    font-size: 2rem;  /* City name size */
+    font-size: 1.25rem;  /* City name size */
     font-weight: bold;
     color: #053939;
 }
@@ -210,14 +211,6 @@ main {
     margin-top: 1rem;
 }
 
-/* Search label (currently not used) */
-.search-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color:  #0c5d51;
-    margin-bottom: 0.75rem;
-}
 
 .dark .search-label {
     color: #297066;
@@ -225,13 +218,13 @@ main {
 
 /* City dropdown search box */
 .location-search {
-    width: 25%;  /* Adjust dropdown width here */
+    width: 30%;  /* Adjust dropdown width here */
     padding: 0.5rem;
     border: 2px solid #5eead4;
     border-radius: 1.5rem;
     background-color: white;
     color: #1f2937;
-    font-size: 0.85rem;
+    font-size: 0.5rem;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
 }
@@ -250,7 +243,7 @@ main {
     color: white;
     border: none;
     border-radius: 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.5rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -281,9 +274,9 @@ main {
 
 /* Full date (e.g., "October 16, 2025") */
 .info-date-full {
-    font-size: 0.75rem;  /* Smaller date size */
+    font-size: 0.5rem;  /* Smaller date size */
     color: #0c5d51;
-    margin-bottom: .5rem;
+    margin-bottom: 0rem;
 }
 
 .dark .info-date-full {
@@ -307,15 +300,6 @@ main {
     flex: 1;  /* Each dropdown takes equal width */
 }
 
-/* Labels (Calculation Method, School) - currently removed from HTML */
-.setting-group label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #0c5d51;
-    margin-bottom: 0.5rem;
-}
-
 .dark .setting-group label {
     color: #0c5d51;
 }
@@ -328,7 +312,7 @@ main {
     border-radius: 1rem;  /* Slightly less rounded */
     background-color: white;
     color: #1f2937;
-    font-size: 0.75rem;  /* Smaller font size */
+    font-size: 0.5rem;  /* Smaller font size */
     transition: all 0.3s ease;
 }
 
@@ -448,28 +432,33 @@ select:focus, input[type="text"]:focus {
 /* ========================================
    PRAYER GRID - MAIN PRAYER TIMES
    ======================================== */
-/* Grid container for all prayer cards - ADJUST COLUMNS HERE */
+/* Grid container for all prayer cards - FLEXIBLE TO ALLOW DIFFERENT SIZES */
 .prayer-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);  /* 8 cards in a row (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha, Midnight, Qiyam) */
-    gap: 1rem;  /* Space between cards */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));  /* Auto-adjust columns, current can be bigger */
+    gap: 0.5rem;
     margin: 0 auto;
     max-width: 100%;
+    padding: 0 0.5rem;
+    align-items: start;  /* Allow different heights */
 }
 
-/* Individual prayer card styling */
+/* Individual prayer card styling - BASE FOR ALL CARDS */
 .prayer-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75));
     backdrop-filter: blur(10px);
-    border-radius: 0.75rem;
-    padding: 1.5rem 0.75rem;  /* Vertical and horizontal padding */
-    min-height: 120px;  /* ADJUST CARD HEIGHT HERE */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-    border: 2px solid rgba(20, 184, 166, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* SMOOTH transition */
+    border: 1px solid rgba(20, 184, 166, 0.2);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    position: relative;
 }
 
 /* Prayer card in dark mode */
@@ -482,33 +471,67 @@ select:focus, input[type="text"]:focus {
 .prayer-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;  /* Aligns items to the left */
+    align-items: flex-start;  /* Align items to left */
+    justify-content: center;
     width: 100%;
-    gap: 0.5rem;
+    gap: 0.25rem;
+    text-align: left;
 }
 
 /* ========================================
-   CURRENT PRAYER HIGHLIGHT
+   CURRENT PRAYER HIGHLIGHT - JS/CSS COMBO
    ======================================== */
-/* Active/current prayer styling - SAME COLOR AS BUTTONS */
-.prayer-card.current {
-    transform: scale(1.15) translateY(-10px);  /* Makes it bigger and lifts it up */
-    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);  /* Deep gradient matching buttons */
-    border-color: #064e3b;
-    box-shadow: 0 12px 40px rgba(6, 95, 70, 0.6);  /* Glowing shadow */
-    z-index: 10;  /* Keeps it above other cards */
+
+/* When a prayer is current, the OTHER cards shrink down */
+.prayer-grid.has-current .prayer-card:not(.current) {
+    transform: scale(0.85);
+    opacity: 1; /* Set back to fully opaque */
 }
 
-/* Current prayer in dark mode */
-.dark .prayer-card.current {
+/* The CURRENT card scales UP from the center */
+.prayer-grid.has-current .prayer-card.current {
+    transform: scale(1.2);
+    z-index: 10;
+    opacity: 1;
     background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);
-    border-color: #5eead4;
+    border-color: #064e3b;
+    box-shadow: 0 12px 40px rgba(6, 95, 70, 0.6);
 }
 
-/* Make text white in current prayer */
+/* Text styling for the current card */
 .prayer-card.current .prayer-name,
 .prayer-card.current .prayer-time {
     color: white !important;
+}
+
+/* "Now" badge for current prayer - TOP RIGHT CORNER */
+.prayer-card.current::after {
+    content: "Now";
+    position: absolute;
+    top: 0.4rem;
+    right: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #064e3b;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite;
+}
+
+/* Pulse animation for "Now" badge */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
 }
 
 /* Icon styling in current prayer */
@@ -517,21 +540,7 @@ select:focus, input[type="text"]:focus {
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 }
 
-/* Prayer card hover effect */
-.prayer-card:hover {
-    transform: translateY(-5px);  /* Lifts up slightly */
-    box-shadow: 0 8px 32px rgba(20, 184, 166, 0.3);
-    border-color: rgba(20, 184, 166, 0.5);
-}
-
-/* Current prayer card hover */
-.prayer-card.current:hover {
-    transform: scale(1.15) translateY(-12px);  /* Lifts even higher */
-}
-
-.dark .prayer-card:hover {
-    border-color: rgba(94, 234, 212, 0.5);
-}
+/* HOVER EFFECTS REMOVED - Cards should NOT hover or scale */
 
 /* ========================================
    PRAYER CARD CONTENT
@@ -545,12 +554,12 @@ select:focus, input[type="text"]:focus {
 
 /* Prayer name text (FAJR, DHUHR, etc.) */
 .prayer-name {
-    font-size: 0.9rem;  /* Prayer name size */
-    font-weight: 600;
+    font-size: 0.65rem;  /* Smaller prayer name size */
+    font-weight: 400;
     color: #0c5d51;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    text-align: left;
+    text-align: left;  /* Align left */
     width: 100%;
 }
 
@@ -560,11 +569,11 @@ select:focus, input[type="text"]:focus {
 
 /* Prayer time text (5:30 AM, etc.) */
 .prayer-time {
-    font-size: 1.75rem;  /* Time size - ADJUST HERE */
+    font-size: 1.1rem;  /* Smaller time size to fit cards */
     font-weight: bold;
     color: #053939;
     font-family: 'Courier New', monospace;  /* Monospace font for times */
-    text-align: left;
+    text-align: left;  /* Align left */
     width: 100%;
 }
 
@@ -683,9 +692,9 @@ select:focus, input[type="text"]:focus {
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */
-/* Tablet and smaller screens (1024px and below) */
-@media (max-width: 1024px) {
-    /* Stack top section vertically */
+/* Tablet and smaller screens (768px and below) */
+@media (max-width: 768px) {
+    /* Stack top section vertically on small screens only */
     .top-section {
         grid-template-columns: 1fr;  /* Single column */
         gap: 1.5rem;
@@ -707,9 +716,10 @@ select:focus, input[type="text"]:focus {
         gap: 0.5rem;
     }
 
-    /* Smaller prayer card padding */
+    /* Maintain square shape on mobile */
     .prayer-card {
         padding: 0.5rem;
+        aspect-ratio: 1 / 1;
     }
 
     /* Smaller icon size */
@@ -724,12 +734,16 @@ select:focus, input[type="text"]:focus {
 
     /* Smaller time text */
     .prayer-time {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
-    /* Less dramatic current prayer highlight on mobile */
+    /* Current prayer on mobile - stays in position, just larger text */
     .prayer-card.current {
-        transform: scale(1.08) translateY(-5px);
+        transform: scale(1);  /* No transform on mobile */
+    }
+    
+    .prayer-card.current .prayer-time {
+        font-size: 1.5rem !important;  /* Larger but proportional on mobile */
     }
     
     /* Smaller info box padding */
