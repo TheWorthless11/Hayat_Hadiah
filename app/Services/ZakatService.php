@@ -12,6 +12,7 @@ class ZakatService
     {
         $cash = (float)($input['cash'] ?? 0);
         $goldGrams = (float)($input['gold_grams'] ?? 0);
+        $goldCarat = (float)($input['gold_carat'] ?? 24); // Default to 24K (pure gold)
         $silverGrams = (float)($input['silver_grams'] ?? 0);
         $businessAssets = (float)($input['business_assets'] ?? 0);
         $receivables = (float)($input['receivables'] ?? 0);
@@ -22,11 +23,14 @@ class ZakatService
         $silverPrice = (float)$input['silver_price_per_gram'];
         $basis = $input['basis']; // 'gold' or 'silver'
         $rate = ((float)$input['zakat_rate']) / 100.0; // e.g., 2.5% => 0.025
-        $currency = $input['currency'] ?? 'USD';
+        $currency = $input['currency'] ?? 'TK';
         $year = (int)($input['year'] ?? (int)date('Y'));
 
+        // Calculate pure gold weight based on carat
+        $pureGoldGrams = $goldGrams * ($goldCarat / 24.0);
+
         // Asset valuations
-        $goldValue = $goldGrams * $goldPrice;
+        $goldValue = $pureGoldGrams * $goldPrice;
         $silverValue = $silverGrams * $silverPrice;
 
         $totalAssets = $cash + $goldValue + $silverValue + $businessAssets + $receivables + $investments;

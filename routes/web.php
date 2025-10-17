@@ -47,3 +47,4 @@ Route::post('/fasting/generate', [FastingController::class, 'generate'])->name('
 // Zakat Module
 Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
 Route::post('/zakat/calculate', [ZakatController::class, 'calculate'])->name('zakat.calculate');
+Route::post('/zakat/save', [ZakatController::class, 'save'])->name('zakat.save');

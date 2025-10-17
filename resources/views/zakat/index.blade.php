@@ -36,10 +36,21 @@
                     <input type="number" step="0.01" name="gold_grams" placeholder="0">
                 </div>
                 <div class="field">
+                    <label>Gold Carat (purity)</label>
+                    <select name="gold_carat">
+                        <option value="24" selected>24K (100% pure)</option>
+                        <option value="22">22K (91.67%)</option>
+                        <option value="21">21K (87.5%)</option>
+                        <option value="18">18K (75%)</option>
+                        <option value="14">14K (58.33%)</option>
+                        <option value="10">10K (41.67%)</option>
+                    </select>
+                </div>
+
+                <div class="field">
                     <label>Silver (grams)</label>
                     <input type="number" step="0.01" name="silver_grams" placeholder="0">
                 </div>
-
                 <div class="field">
                     <label>Liabilities</label>
                     <input type="number" step="0.01" name="liabilities" placeholder="0.00">

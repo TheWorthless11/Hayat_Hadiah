@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             KaabaLocationSeeder::class,
             QuranSeeder::class,
             ExpandedHadithSeeder::class,  // Updated to use expanded hadith collection
+            ZakatCategorySeeder::class,
         ]);
     }
 }

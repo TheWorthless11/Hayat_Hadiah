@@ -211,16 +211,26 @@ Hayat_Hadi'ah/
   - Voluntary fast presets (Mon/Thu/White Days)
   - Export CSV/PDF
 
-### **8. Zakat Calculator** ⏳ PENDING
+### **8. Zakat Calculator** ✅ COMPLETE
+- **Status**: Production Ready ✨ **JUST COMPLETED**
 - **Database**: `zakat_categories`, `zakat_records` tables exist
-- **Models**: ZakatCategory.php, ZakatRecord.php exist
-- **Planned Features**:
-  - Calculate zakat on wealth, gold, silver
-  - Track annual zakat
-  - Zakat payment records
-  - Nisab thresholds
-  - Multiple currencies
-  - Export reports
+- **Models**: ZakatCategory.php, ZakatRecord.php
+- **Files**: ZakatController, ZakatService, ZakatCategorySeeder, views/zakat/
+- **Routes**: /zakat, /zakat/calculate, /zakat/save
+- **Features Implemented**:
+  - Calculate zakat on cash, gold, silver, business assets, investments, receivables
+  - Nisab threshold (gold 85g / silver 595g basis)
+  - Configurable gold/silver prices
+  - Liabilities deduction
+  - 2.5% zakat rate (configurable)
+  - Detailed breakdown display
+  - Save calculation records (authenticated users)
+  - 6 asset categories seeded
+- **Planned Enhancements**:
+  - Multiple currencies and live rates
+  - Annual history/tracking dashboard
+  - Payment status tracking
+  - Export PDF/CSV reports
 
 ### **9. Islamic Calendar** ⏳ PENDING
 - **Database**: `islamic_calendar_events` table exists
