@@ -1,0 +1,149 @@
+/* ========================================
+   BASE STYLES (shared across all pages)
+   Keep module-specific styles in their own CSS files.
+   ======================================== */
+
+/* Reset and base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+/* Navigation bar */
+nav {
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(6, 95, 70, 0.95), rgba(6, 78, 59, 0.95));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dark nav {
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.95), rgba(5, 59, 47, 0.95), rgba(4, 47, 36, 0.95));
+    backdrop-filter: blur(10px);
+}
+
+nav .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+nav .logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark nav .logo { color: #ffffff; }
+
+nav .nav-links { display: flex; gap: 1.5rem; }
+
+nav a {
+    color: #e0f7fa;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover { color: #ffffff; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); }
+.dark nav a { color: #e0f7fa; }
+.dark nav a:hover { color: #ffffff; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); }
+
+/* Main content area with subtle pattern + gradient */
+main {
+    padding: 2rem 0;
+    min-height: 100vh;
+    background:
+        url('data:image/svg+xml,%3Csvg width="80" height="80" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73z" fill="none" stroke="%23FFFFFF" stroke-opacity="0.3" stroke-width="1"/%3E%3C/svg%3E') repeat,
+        linear-gradient(180deg, #26b6c6 30%, #29b7c7 30%, #4dd0e1 70%, #b7dbd6 95%, #e3dcce 100%);
+}
+
+.container { max-width: 95%; margin: 0 auto; padding: 0 1rem; }
+
+/* Floating theme toggle button */
+.theme-btn-floating {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-btn-floating:hover {
+    transform: scale(1.1) rotate(15deg);
+    background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);
+    box-shadow: 0 12px 32px rgba(6, 95, 70, 0.5);
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(6, 95, 70, 0.95), rgba(6, 78, 59, 0.95));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dark .footer {
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.95), rgba(5, 59, 47, 0.95), rgba(4, 47, 36, 0.95));
+    backdrop-filter: blur(10px);
+}
+
+.footer p { margin: 0.25rem 0; color: #e0f7fa; }
+.footer .copyright-year { font-weight: 600; color: #ffffff; }
+.footer .developer-name { font-weight: 700; color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+
+/* Alerts */
+.alert { padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+.alert-error { background-color: rgba(239, 68, 68, 0.95); color: white; }
+.dark .alert-error { background-color: rgba(185, 28, 28, 0.95); }
+.alert-warning { background-color: rgba(234, 179, 8, 0.95); color: white; }
+.dark .alert-warning { background-color: rgba(161, 98, 7, 0.95); }
+
+/* Responsive tweaks for theme button */
+@media (max-width: 640px) {
+    .theme-btn-floating {
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
+    }
+}

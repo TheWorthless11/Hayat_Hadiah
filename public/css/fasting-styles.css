@@ -1,0 +1,15 @@
+/* Fasting module styles */
+.fasting-container { max-width: 1100px; margin: 2rem auto; padding: 1rem; }
+.fasting-card { background: #ffffff; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.06); padding: 1.25rem; }
+.controls { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; margin-bottom: 1rem; }
+.controls .field { display:flex; flex-direction: column; gap: .5rem; }
+.btn-primary { background: linear-gradient(135deg, #0f766e, #14b8a6); color:#fff; border:none; padding:.75rem 1rem; border-radius:10px; cursor:pointer; }
+.calendar { overflow-x:auto; }
+table { width:100%; border-collapse: collapse; }
+th, td { padding: .75rem; border-bottom: 1px solid #eef2f7; text-align:left; }
+th { background:#f7fafc; position: sticky; top:0; z-index:1; }
+.badge { display:inline-block; padding:.15rem .5rem; border-radius: 999px; background:#e6fffa; color:#0f766e; font-size:.8rem; }
+.muted { color:#64748b; }
+@media (max-width: 768px) {
+  .controls { grid-template-columns: 1fr 1fr; }
+}
