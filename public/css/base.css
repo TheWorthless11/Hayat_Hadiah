@@ -10,14 +10,40 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+@font-face {
+    font-family: 'a1';
+    src: url('/fonts/a1.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'a2';
+    src: url('/fonts/a2.ttf') format('truetype');
+}
+
+.arabic-calligraphy {
+    font-family:  serif;
+    font-size: 32px;
+    direction: rtl;
+    text-align: right;
+}
+
+
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Cinzel', 'Georgia', serif;
     color: #1f2937;
     min-height: 100vh;
+    background-color: #0d7e92;
+    background-attachment: fixed;
+    transition: all 0.3s ease;
+}
+
+/* Arabic text styling */
+[lang="ar"],
+.arabic-text,
+*[dir="rtl"] {
+    font-family: 'Amiri', 'Traditional Arabic', 'Arabic Typesetting', serif !important;
+    direction: rtl;
 }
 
 /* Navigation bar */
@@ -39,23 +65,26 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 0.85rem;
 }
 
 nav .logo {
-    font-weight: bold;
-    font-size: 1.25rem;
+    font-weight: 700;
+    font-size: 0.9rem;
     color: #ffffff;
     text-decoration: none;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Cinzel', 'Georgia', serif;
+    letter-spacing: 0.035em;
 }
 
 .dark nav .logo { color: #ffffff; }
 
-nav .nav-links { display: flex; gap: 1.5rem; }
+nav .nav-links { display: flex; gap: 0.8rem; }
 
 nav a {
     color: #e0f7fa;
+    font-size: 0.78rem;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -65,13 +94,31 @@ nav a:hover { color: #ffffff; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); }
 .dark nav a { color: #e0f7fa; }
 .dark nav a:hover { color: #ffffff; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); }
 
-/* Main content area with subtle pattern + gradient */
+/* Main content area with subtle pattern + gradient - LIGHT MODE */
 main {
-    padding: 2rem 0;
+    padding-top: 2rem;
+
     min-height: 100vh;
-    background:
+    background: 
         url('data:image/svg+xml,%3Csvg width="80" height="80" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73z" fill="none" stroke="%23FFFFFF" stroke-opacity="0.3" stroke-width="1"/%3E%3C/svg%3E') repeat,
-        linear-gradient(180deg, #26b6c6 30%, #29b7c7 30%, #4dd0e1 70%, #b7dbd6 95%, #e3dcce 100%);
+        linear-gradient(180deg, 
+            #26b6c6 0%, 
+            #29b7c7 30%, 
+            #4dd0e1 70%, 
+            #b7dbd6 95%, 
+            #e3dcce 100%);
+}
+
+/* Main content area - DARK MODE */
+.dark main {
+    background: 
+        url('data:image/svg+xml,%3Csvg width="80" height="80" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73z" fill="none" stroke="%23FFFFFF" stroke-opacity="0.1" stroke-width="1"/%3E%3C/svg%3E') repeat,
+        linear-gradient(180deg, 
+            hsl(150, 30%, 12%) 0%, 
+            hsl(140, 25%, 20%) 30%, 
+            hsl(120, 20%, 25%) 70%,   
+            hsl(100, 15%, 22%) 95%,   
+            hsl(80, 10%, 18%) 100%);
 }
 
 .container { max-width: 95%; margin: 0 auto; padding: 0 1rem; }
@@ -105,10 +152,7 @@ main {
 
 /* Footer */
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
     background: linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(6, 95, 70, 0.95), rgba(6, 78, 59, 0.95));
     backdrop-filter: blur(10px);
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
@@ -119,6 +163,7 @@ main {
     width: 100%;
     transition: all 0.3s ease;
     z-index: 1000;
+    margin-top: auto;
 }
 
 .dark .footer {

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/prayer-styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/prayer-styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/countdown-timer.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -97,6 +99,11 @@
                         @continue
                     @endif
                     @php
+                        // Skip Imsak (pre-Fajr time) - not a mandatory prayer
+                        if (strtolower($name) === 'imsak') {
+                            continue;
+                        }
+                        
                         // Convert 24-hour time to 12-hour format with AM/PM
                         $timeObj = \DateTime::createFromFormat('H:i', $time);
                         $time12h = $timeObj ? $timeObj->format('g:i A') : $time;
@@ -110,6 +117,23 @@
                 @endforeach
             </div>
         @endif
+
+        <!-- Next Prayer Countdown Timer -->
+        <div class="next-prayer-timer-container">
+            <div class="timer-circle-container">
+                <svg class="timer-progress" width="200" height="200" viewBox="0 0 200 200">
+                    <circle class="progress-background" cx="100" cy="100" r="90" />
+                    <circle class="progress-bar" cx="100" cy="100" r="90" />
+                </svg>
+                <div class="timer-text">
+                    <div class="timer-label">Next Prayer</div>
+                    <div id="next-prayer-name" class="next-prayer-name">---</div>
+                    <div id="next-prayer-time" class="next-prayer-time">--:-- --</div>
+                    <div id="time-left" class="time-left">--:--:--</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Copyright Footer -->
@@ -145,7 +169,12 @@
 
             // Highlight current prayer
             highlightCurrentPrayer();
-            // Update every minute
+            // Update countdown timer
+            updateCountdown();
+
+            // Update every second for the countdown
+            setInterval(updateCountdown, 1000);
+            // Update every minute for the main prayer highlight
             setInterval(highlightCurrentPrayer, 60000);
         });
 
@@ -189,6 +218,85 @@
                 currentPrayerCard.classList.add('current');
                 prayerGrid.classList.add('has-current');
             }
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const allPrayerCards = document.querySelectorAll('.prayer-card');
+            
+            const mandatoryPrayers = Array.from(allPrayerCards).filter(card => {
+                const prayerName = card.getAttribute('data-prayer').toLowerCase();
+                return !['sunrise', 'midnight', 'qiyam'].includes(prayerName);
+            });
+            
+            let nextPrayer = null;
+            let nextPrayerTimeObj = null;
+            let prevPrayer = null;
+
+            // Find the next upcoming prayer from the mandatory list
+            for (let i = 0; i < mandatoryPrayers.length; i++) {
+                const card = mandatoryPrayers[i];
+                const timeStr = card.getAttribute('data-time');
+                if (!timeStr) continue;
+
+                const [hours, minutes] = timeStr.split(':').map(Number);
+                const prayerTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+
+                if (prayerTime > now) {
+                    nextPrayer = card;
+                    nextPrayerTimeObj = prayerTime;
+                    prevPrayer = i > 0 ? mandatoryPrayers[i - 1] : mandatoryPrayers[mandatoryPrayers.length - 1];
+                    break;
+                }
+            }
+
+            // If all mandatory prayers for today have passed, next is Fajr tomorrow
+            if (!nextPrayer) {
+                nextPrayer = mandatoryPrayers[0]; // Fajr
+                const [h, m] = nextPrayer.getAttribute('data-time').split(':').map(Number);
+                nextPrayerTimeObj = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, h, m);
+                prevPrayer = mandatoryPrayers[mandatoryPrayers.length - 1]; // Isha
+            }
+            
+            const prevTimeStr = prevPrayer.getAttribute('data-time');
+            const [ph, pm] = prevTimeStr.split(':').map(Number);
+            let prevPrayerTimeObj = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ph, pm);
+            
+            // Handle case where previous prayer was yesterday (e.g., current time is after midnight, before Fajr)
+            if (prevPrayerTimeObj > nextPrayerTimeObj) {
+                 prevPrayerTimeObj.setDate(prevPrayerTimeObj.getDate() - 1);
+            }
+
+
+            // Calculate time difference
+            const totalDuration = nextPrayerTimeObj - prevPrayerTimeObj;
+            const timeElapsed = now - prevPrayerTimeObj;
+            const timeRemaining = nextPrayerTimeObj - now;
+
+            // Calculate progress
+            const progress = Math.min((timeElapsed / totalDuration) * 100, 100);
+
+            // Update UI
+            const nextPrayerName = nextPrayer.querySelector('.prayer-name').textContent;
+            const nextPrayerTime = nextPrayer.querySelector('.prayer-time').textContent;
+
+            document.getElementById('next-prayer-name').textContent = nextPrayerName;
+            document.getElementById('next-prayer-time').textContent = nextPrayerTime;
+
+            // Format time remaining
+            const hoursLeft = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesLeft = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsLeft = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById('time-left').textContent = 
+                `${String(hoursLeft).padStart(2, '0')}:${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}`;
+
+            // Update progress bar
+            const progressBar = document.querySelector('.progress-bar');
+            const circleRadius = progressBar.r.baseVal.value;
+            const circumference = 2 * Math.PI * circleRadius;
+            const offset = circumference - (progress / 100) * circumference;
+            progressBar.style.strokeDashoffset = offset;
         }
 
         // Auto-detect location using browser's Geolocation API

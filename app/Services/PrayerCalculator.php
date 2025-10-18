@@ -52,7 +52,8 @@ class PrayerCalculator
         $eqt = $q / 15.0 - $this->fixHour($RA);
 
         // Noon time (when sun crosses meridian)
-        $noon = 12 - $lng / 15.0 - $eqt;
+        // Add timezone offset to get local time
+        $noon = 12 - $lng / 15.0 - $eqt + $tzOffset;
 
         // helper closure to compute time from sun altitude angle
         $computeTime = function ($angle) use ($decl, $lat, $noon) {

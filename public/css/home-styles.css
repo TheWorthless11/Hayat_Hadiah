@@ -399,3 +399,126 @@
         font-size: 2rem;
     }
 }
+
+/* ========================================
+   DARK MODE STYLES
+   ======================================== */
+.dark .hero-section {
+    background: linear-gradient(135deg, #064e3b 0%, #1e3a4f 100%);
+}
+
+.dark .hero-card {
+    background: rgba(31, 41, 55, 0.9);
+    color: #f3f4f6;
+}
+
+.dark .hero-card h2 {
+    color: #5eead4;
+}
+
+.dark .prayer-name {
+    color: #5eead4;
+}
+
+.dark .prayer-time {
+    color: #ccfbf1;
+}
+
+.dark .countdown-badge {
+    background: linear-gradient(135deg, #b8860b, #daa520);
+    color: #1f2937;
+}
+
+.dark .hijri-date {
+    color: #5eead4;
+}
+
+.dark .gregorian-date {
+    color: #ccfbf1;
+}
+
+.dark .card-link {
+    color: #5eead4;
+}
+
+.dark .card-link:hover {
+    color: #99f6e4;
+}
+
+.dark .highlights-section {
+    background: transparent;
+}
+
+.dark .section-title {
+    color: #f3f4f6;
+}
+
+.dark .highlight-card {
+    background: rgba(31, 41, 55, 0.8);
+    border-left-color: #5eead4;
+}
+
+.dark .highlight-header h3 {
+    color: #5eead4;
+}
+
+.dark .highlight-meta {
+    color: #9ca3af;
+}
+
+.dark .arabic-text {
+    background: rgba(17, 24, 39, 0.6);
+    color: #f3f4f6;
+}
+
+.dark .translation-text {
+    color: #d1d5db;
+}
+
+.dark .transliteration-text {
+    color: #9ca3af;
+}
+
+.dark .hadith-card {
+    border-left-color: #5eead4;
+}
+
+.dark .hadith-text {
+    color: #d1d5db;
+}
+
+.dark .narrator-text {
+    color: #9ca3af;
+}
+
+.dark .highlight-link {
+    color: #5eead4;
+}
+
+.dark .highlight-link:hover {
+    color: #99f6e4;
+}
+
+.dark .inspiration-banner {
+    background: linear-gradient(135deg, #b8860b, #daa520);
+}
+
+.dark .inspiration-content h3 {
+    color: #1f2937;
+}
+
+.dark .inspiration-content p {
+    color: #374151;
+}
+
+.dark .footer-stats {
+    background: #1f2937;
+}
+
+.dark .stat-number {
+    color: #d4af37;
+}
+
+.dark .stat-label {
+    color: #9ca3af;
+}

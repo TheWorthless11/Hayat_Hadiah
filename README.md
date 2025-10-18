@@ -8,7 +8,7 @@ Hayat Hadia (meaning Gift of Life) is a comprehensive Islamic lifestyle web appl
 
 Location-based prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha, Midnight, Qiyam)
 Multiple calculation methods (Muslim World League, ISNA, Egyptian, Karachi, Umm Al-Qura)
-Hanafi and Standard Asr calculation schools
+Hanafi and Standard calculation schools
 Auto-detect location via GPS
 City search with 25+ worldwide locations
 Notifications and reminders for prayers

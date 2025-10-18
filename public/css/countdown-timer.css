@@ -1,0 +1,102 @@
+/* ========================================
+   NEXT PRAYER COUNTDOWN TIMER
+   ======================================== */
+
+.next-prayer-timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    margin-top: 4rem; /* Increased space from 1.5rem to 4rem */
+    /* The background, shadow, and border have been removed */
+}
+
+.dark .next-prayer-timer-container {
+    /* background: rgba(32, 91, 173, 0.6);
+    border-color: rgba(255, 255, 255, 0.1); */
+}
+
+.timer-circle-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-progress {
+    transform: rotate(-90deg);
+    overflow: visible;
+}
+
+.progress-background {
+    fill: none;
+    stroke: rgba(20, 184, 166, 0.1);
+    stroke-width: 14;
+}
+
+.dark .progress-background {
+    stroke: rgba(94, 234, 212, 0.1);
+}
+
+.progress-bar {
+    fill: none;
+    stroke: #14b8a6; /* Teal-500 */
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-dasharray: 565; /* Circumference for r=90 */
+    stroke-dashoffset: 565;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.dark .progress-bar {
+    stroke: #053939; /* Teal-300 */
+}
+
+.timer-text {
+    position: absolute;
+    text-align: center;
+    color: #064e3b; /* Green-900 - UNIFIED COLOR */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark .timer-text {
+    color: #ccfbf1; /* Teal-100 - UNIFIED BRIGHT COLOR */
+}
+
+.timer-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+}
+
+.next-prayer-name {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 2px 0;
+}
+
+.next-prayer-time {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.time-left {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 8px;
+    font-family: 'Roboto Mono', monospace;
+    color: #064e3b; /* Green-900 - UNIFIED COLOR */
+}
+
+.dark .time-left {
+    color: #ccfbf1; /* Teal-100 - UNIFIED BRIGHT COLOR */
+}

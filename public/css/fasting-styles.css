@@ -1,15 +1,138 @@
 /* Fasting module styles */
-.fasting-container { max-width: 1100px; margin: 2rem auto; padding: 1rem; }
-.fasting-card { background: #ffffff; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.06); padding: 1.25rem; }
-.controls { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; margin-bottom: 1rem; }
-.controls .field { display:flex; flex-direction: column; gap: .5rem; }
-.btn-primary { background: linear-gradient(135deg, #0f766e, #14b8a6); color:#fff; border:none; padding:.75rem 1rem; border-radius:10px; cursor:pointer; }
+.fasting-container { max-width: 1100px; margin: 1.25rem auto; padding: 0.75rem; }
+.fasting-card { background: #ffffff; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.06); padding: 0.9rem; }
+.fasting-card.dropdown-space { padding-bottom: 220px; }
+.controls { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0.6rem; margin-bottom: 0.75rem; }
+.controls .field { display:flex; flex-direction: column; gap: .35rem; }
+
+/* Input and Select Styling */
+.controls .field label {
+    font-weight: 600;
+    color: #0f766e;
+    font-size: 0.8rem;
+    letter-spacing: 0.2px;
+}
+
+.controls .field input[type="month"],
+.controls .field select {
+    padding: 0.55rem 0.75rem;
+    border: 2px solid #d1fae5;
+    border-radius: 8px;
+    background: #f0fdfa;
+    color: #064e3b;
+    font-size: 0.9rem;
+    /* Use Windows-native UI font for crisp rendering on selects/inputs */
+    font-family: 'Segoe UI', system-ui, Tahoma, Arial, sans-serif;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.controls .field input[type="month"]:hover,
+.controls .field select:hover {
+    border-color: #5eead4;
+    background: #ffffff;
+}
+
+.controls .field input[type="month"]:focus,
+.controls .field select:focus {
+    outline: none;
+    border-color: #14b8a6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+}
+
+/* Calendar icon for month input */
+.controls .field input[type="month"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(40%) sepia(65%) saturate(400%) hue-rotate(140deg);
+    transition: all 0.3s ease;
+}
+
+.controls .field input[type="month"]:hover::-webkit-calendar-picker-indicator {
+    filter: invert(50%) sepia(85%) saturate(600%) hue-rotate(140deg);
+}
+
+/* Use native dropdown arrow to avoid jagged artifacts on Windows */
+.controls .field select {
+    appearance: auto;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    background-image: none;
+    background-repeat: initial;
+    background-position: initial;
+    background-size: auto;
+    padding-right: 1rem; /* reset to default spacing */
+}
+
+.btn-primary { background: linear-gradient(135deg, #0f766e, #14b8a6); color:#fff; border:none; padding:.55rem 0.8rem; border-radius:8px; cursor:pointer; transition: all 0.3s ease; font-weight: 600; font-size: 0.9rem; }
+.btn-primary:hover { background: linear-gradient(135deg, #0d6458, #0d9488); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3); }
+
+/* Source Info Box */
+.source-info { 
+    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); 
+    border: 2px solid #14b8a6; 
+    border-radius: 8px; 
+    padding: 0.75rem 1rem; 
+    margin-bottom: 1rem;
+    color: #064e3b;
+    font-size: 0.85rem;
+}
+
+.source-info strong {
+    color: #0f766e;
+    margin-right: 0.5rem;
+}
+
 .calendar { overflow-x:auto; }
-table { width:100%; border-collapse: collapse; }
-th, td { padding: .75rem; border-bottom: 1px solid #eef2f7; text-align:left; }
-th { background:#f7fafc; position: sticky; top:0; z-index:1; }
-.badge { display:inline-block; padding:.15rem .5rem; border-radius: 999px; background:#e6fffa; color:#0f766e; font-size:.8rem; }
-.muted { color:#64748b; }
+table { width:100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { padding: .55rem; border-bottom: 1px solid #eef2f7; text-align:left; }
+th { background:#f7fafc; position: sticky; top:0; z-index:1; font-weight: 600; color: #0f766e; font-size: 0.9rem; }
+.time-cell { font-weight: 600; color: #0d9488; font-size: 0.98rem; }
+.badge { display:inline-block; padding:.22rem .6rem; border-radius: 999px; background:#e6fffa; color:#0f766e; font-size:.78rem; font-weight: 600; }
+.status-saved { color: #059669; font-weight: 600; }
+.status-preview { color: #64748b; font-style: italic; }
+.muted { color:#64748b; font-size: 0.9rem; }
+
+/* Dark mode */
+.dark .fasting-card { background: #053939; border: 2px solid #5eead4; }
+.dark .controls .field label { color: #5eead4; }
+.dark .controls .field input[type="month"],
+.dark .controls .field select {
+    background: #0d4d47;
+    border-color: #0d9488;
+    color: #ccfbf1;
+}
+
+.dark .controls .field input[type="month"]:hover,
+.dark .controls .field select:hover {
+    border-color: #5eead4;
+    background: #064e3b;
+}
+
+.dark .controls .field input[type="month"]:focus,
+.dark .controls .field select:focus {
+    border-color: #5eead4;
+    background: #064e3b;
+    box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.1);
+}
+
+.dark .controls .field input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(80%) sepia(25%) saturate(400%) hue-rotate(120deg) brightness(1.1);
+}
+
+/* Use native arrow in dark mode as well */
+.dark .controls .field select { background-image: none; }
+
+.dark .source-info { background: linear-gradient(135deg, #0d4d47 0%, #053939 100%); border-color: #5eead4; color: #ccfbf1; }
+.dark .source-info strong { color: #5eead4; }
+.dark th { background: #0d4d47; color: #5eead4; }
+.dark td { color: #99f6e4; border-bottom-color: #0d4d47; }
+.dark .time-cell { color: #14b8a6; }
+.dark .badge { background: #0d4d47; color: #5eead4; }
+.dark .status-saved { color: #10b981; }
+.dark .status-preview { color: #9ca3af; }
+.dark .muted { color: #9ca3af; }
+
 @media (max-width: 768px) {
   .controls { grid-template-columns: 1fr 1fr; }
 }

@@ -5,58 +5,36 @@
 @endpush
 
 @section('content')
+<!-- Noble Quran Header Banner (Full Width) -->
+<div class="quran-banner">
+    <div class="quran-banner-content">
+        <h1 class="quran-arabic-title arabic-calligraphy">القرآن الكريم</h1>
+        <p class="quran-english-title">THE NOBLE QURAN</p>
+        <div class="quran-search-bar">
+            <input 
+                type="text" 
+                id="mainSearchInput" 
+                class="quran-search-input" 
+                placeholder="Search or ask anything related to the Quran!">
+            <button id="mainSearchBtn" class="quran-search-btn">GO</button>
+        </div>
+    </div>
+</div>
+
 <div class="quran-container">
-    <!-- Header -->
-    <header class="quran-header">
-        <h1 class="quran-title">📖 Quran Reader</h1>
-        <p class="quran-subtitle">Read and explore the Holy Quran</p>
-    </header>
-
-    <!-- Verse of the Day -->
-    <section class="verse-of-day-section">
-        <div class="verse-card verse-of-day-card">
-            <div class="card-header">
-                <h3>🌟 Verse of the Day</h3>
-            </div>
-            <div class="card-body" id="verseOfDayContent">
-                <div class="loading">Loading verse...</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="search-container">
-            <h3 class="search-title">🔍 Search Quran</h3>
-            <div class="search-box">
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    class="search-input" 
-                    placeholder="Search verses by keyword..."
-                    minlength="3">
-                <button id="searchBtn" class="btn btn-primary">
-                    <span class="btn-icon">🔍</span> Search
-                </button>
-            </div>
-            <div id="searchResults" class="search-results"></div>
-        </div>
-    </section>
+    <!-- Search Results (Hidden by default) -->
+    <div id="searchResults" class="search-results"></div>
 
     <!-- Surah List -->
     <section class="surah-list-section">
-        <h2 class="section-title">📚 Surahs (Chapters)</h2>
-        <div class="surah-grid">
+        <h2 class="chapters-title">CHAPTERS (SURAHS)</h2>
+        <div class="surah-list">
             @foreach($surahs as $surah)
-            <div class="surah-card" onclick="loadSurah({{ $surah['number'] }})">
-                <div class="surah-number">{{ $surah['number'] }}</div>
-                <div class="surah-info">
-                    <h3 class="surah-name">{{ $surah['name'] }}</h3>
-                    <p class="surah-translation">{{ $surah['translation'] }}</p>
-                    <div class="surah-meta">
-                        <span class="surah-verses">{{ $surah['verses'] }} verses</span>
-                        <span class="surah-revelation">{{ $surah['revelation'] }}</span>
-                    </div>
+            <div class="surah-item">
+                <span class="surah-number-text">{{ $surah['number'] }}.</span>
+                <div class="surah-text-group" onclick="loadSurah({{ $surah['number'] }})">
+                    <span class="surah-name-text">{{ $surah['name'] }}</span>
+                    <span class="surah-translation-text">({{ $surah['translation'] }})</span>
                 </div>
             </div>
             @endforeach
@@ -81,54 +59,26 @@
     // State
     let currentLanguage = 'en';
 
-    // Load verse of the day on page load
+    // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
-        loadVerseOfDay();
-    });
-
-    // Load verse of the day
-    async function loadVerseOfDay() {
-        try {
-            const response = await fetch('{{ route("quran.verse-of-day") }}');
-            const data = await response.json();
-            
-            if (data.success) {
-                const verse = data.verse;
-                const surahInfo = data.surah_info;
-                
-                document.getElementById('verseOfDayContent').innerHTML = `
-                    <div class="verse-content">
-                        <div class="verse-arabic">${verse.arabic_text || ''}</div>
-                        <div class="verse-translation">${verse.translation || ''}</div>
-                        <div class="verse-reference">
-                            <strong>${surahInfo?.name || `Surah ${verse.surah}`}</strong> 
-                            (${verse.surah}:${verse.ayah})
-                        </div>
-                    </div>
-                `;
-            } else {
-                document.getElementById('verseOfDayContent').innerHTML = `
-                    <p class="error">No verse available today</p>
-                `;
+        // Connect main search bar to search functionality
+        document.getElementById('mainSearchBtn').addEventListener('click', function() {
+            const mainSearchInput = document.getElementById('mainSearchInput');
+            if (mainSearchInput.value.trim()) {
+                searchVerses(mainSearchInput.value.trim());
             }
-        } catch (error) {
-            console.error('Error loading verse of day:', error);
-            document.getElementById('verseOfDayContent').innerHTML = `
-                <p class="error">Failed to load verse</p>
-            `;
-        }
-    }
+        });
+        
+        document.getElementById('mainSearchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && this.value.trim()) {
+                searchVerses(this.value.trim());
+            }
+        });
+    });
 
     // Search verses
-    document.getElementById('searchBtn').addEventListener('click', searchVerses);
-    document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            searchVerses();
-        }
-    });
-
-    async function searchVerses() {
-        const query = document.getElementById('searchInput').value.trim();
+    async function searchVerses(query) {
+        query = query || document.getElementById('mainSearchInput').value.trim();
         
         if (query.length < 3) {
             alert('Please enter at least 3 characters');

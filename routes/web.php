@@ -8,6 +8,7 @@ use App\Http\Controllers\QuranController;
 use App\Http\Controllers\HadithController;
 use App\Http\Controllers\FastingController;
 use App\Http\Controllers\ZakatController;
+use App\Http\Controllers\MosqueController;
 
 // Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -47,3 +48,7 @@ Route::post('/fasting/generate', [FastingController::class, 'generate'])->name('
 Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
 Route::post('/zakat/calculate', [ZakatController::class, 'calculate'])->name('zakat.calculate');
 Route::post('/zakat/save', [ZakatController::class, 'save'])->name('zakat.save');
+
+// Nearby Mosque Module
+Route::get('/mosques', [MosqueController::class, 'index'])->name('mosques.index');
+Route::post('/mosques/nearby', [MosqueController::class, 'fetchNearby'])->name('mosques.nearby');

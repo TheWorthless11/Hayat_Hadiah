@@ -60,17 +60,21 @@ class FastingController extends Controller
                 continue;
             }
 
-            // Sehri = 10 minutes before Fajr if Imsak not provided
+            // Sehri = Fajr time (or Imsak if available)
+            // Create time object directly in location's timezone
             $sehriObj = null;
+            $timezone = $location->timezone ?? config('app.timezone', 'UTC');
+            
             if (!empty($times['imsak'])) {
-                $sehriObj = Carbon::createFromFormat('Y-m-d H:i', "$dateStr {$times['imsak']}");
+                $sehriObj = Carbon::createFromFormat('Y-m-d H:i', $dateStr . ' ' . $times['imsak'], $timezone);
             } elseif (!empty($times['fajr'])) {
-                $sehriObj = Carbon::createFromFormat('Y-m-d H:i', "$dateStr {$times['fajr']}")->subMinutes(10);
+                $sehriObj = Carbon::createFromFormat('Y-m-d H:i', $dateStr . ' ' . $times['fajr'], $timezone);
             }
 
+            // Iftar = Maghrib time
             $iftarObj = null;
             if (!empty($times['maghrib'])) {
-                $iftarObj = Carbon::createFromFormat('Y-m-d H:i', "$dateStr {$times['maghrib']}");
+                $iftarObj = Carbon::createFromFormat('Y-m-d H:i', $dateStr . ' ' . $times['maghrib'], $timezone);
             }
 
             $payload = [
