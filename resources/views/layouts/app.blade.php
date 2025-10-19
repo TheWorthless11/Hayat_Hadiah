@@ -24,6 +24,7 @@
                 <a href="/hadith">Hadith</a>
                 <a href="/fasting">Fasting</a>
                 <a href="/mosques">Nearby Mosque</a>
+                <a href="/duas">Duas</a>
                 <a href="/zakat">Zakat</a>
             </div>
         </div>
