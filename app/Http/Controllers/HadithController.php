@@ -221,4 +221,3 @@ class HadithController extends Controller
         ];
     }
 }
-

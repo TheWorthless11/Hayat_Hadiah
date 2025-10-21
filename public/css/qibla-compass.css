@@ -12,7 +12,7 @@
 .qibla-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #053939;
+    color: hsl(30, 40%, 30%);
     margin-bottom: 0.5rem;
 }
 
@@ -22,7 +22,7 @@
 
 .qibla-subtitle {
     font-size: 1.1rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .qibla-subtitle {
@@ -51,7 +51,7 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 0 30px rgba(20, 184, 166, 0.1);
     padding: 20px;
     position: relative;
-    border: 3px solid #5eead4;
+    border: 3px solid hsl(30, 40%, 30%);
 }
 
 .dark .compass-outer {
@@ -85,7 +85,7 @@
     position: absolute;
     font-weight: bold;
     font-size: 1.5rem;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .compass-direction {
@@ -123,14 +123,12 @@
     position: absolute;
     width: 4px;
     height: 45%;
-    background: linear-gradient(to top, #10b981 0%, #059669 100%);
-    top: 5%;
+    background: hsl(30, 30%, 35%);
     left: 50%;
     transform-origin: bottom center;
     transform: translateX(-50%) rotate(0deg);
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 2px 2px 0 0;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
 .needle-point {
@@ -142,8 +140,8 @@
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 16px solid #10b981;
-    filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.8));
+    border-bottom: 16px solid hsl(30, 25%, 47%);
+    filter: drop-shadow(0 0 5px rgba(227, 176, 114, 0.8));
 }
 
 /* Compass Center - Kaaba Icon */
@@ -154,7 +152,7 @@
     transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #0f766e, #065f46);
+    background: hsl(30, 25%, 47%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -181,7 +179,7 @@
 .degree-value {
     font-size: 3rem;
     font-weight: bold;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     font-family: 'Courier New', monospace;
 }
 
@@ -191,7 +189,7 @@
 
 .degree-label {
     font-size: 1rem;
-    color: #0c5d51;
+    color: hsl(30, 40%, 30%);
     margin-top: 0.5rem;
 }
 
@@ -221,7 +219,7 @@
     padding: 1.5rem;
     text-align: center;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgba(94, 234, 212, 0.3);
+    border: 2px solid rgba(215, 158, 79, 0.3);
     transition: all 0.3s ease;
 }
 
@@ -232,7 +230,7 @@
 
 .info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
+    box-shadow: 0 8px 24px rgba(211, 146, 24, 0.3);
 }
 
 .info-card-icon {
@@ -242,7 +240,7 @@
 
 .info-card-title {
     font-size: 0.875rem;
-    color: #0c5d51;
+    color: hsl(30, 25%, 47%);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.5rem;
@@ -255,7 +253,7 @@
 .info-card-value {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #053939;
+    color: hsl(30, 40%, 30%);
     margin-bottom: 0.25rem;
 }
 
@@ -265,7 +263,7 @@
 
 .info-card-coords {
     font-size: 0.875rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     font-family: 'Courier New', monospace;
 }
 

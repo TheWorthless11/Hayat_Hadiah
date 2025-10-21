@@ -5,9 +5,9 @@
 /* ==================== NOBLE QURAN BANNER ==================== */
 .quran-banner {
     width: 100%;
-    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+    background:  #FFE1AF;
     padding: 2rem 2rem;
-    margin: 0 0 3rem 0;
+    margin: 1.5rem 0 3rem 0;
     /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
     position: relative;
     overflow: hidden;
@@ -29,19 +29,18 @@
 .quran-arabic-title {
     font-size: 3rem;
     font-weight: 700;
-    color: #ffffff;
+    color: hsl(30, 30%, 35%);
     margin: 0 0 0.5rem 0;
-    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
     letter-spacing: 0.15em;
     line-height: 1.3;
     position: relative;
     display: inline-block;
     padding: 0.5rem 2rem;
-    border-top: 3px solid rgba(255, 215, 0, 0.6);
-    border-bottom: 3px solid rgba(255, 215, 0, 0.6);
+    border-top: 1px solid hsl(30, 30%, 35%);
+    border-bottom: 1px solid hsl(30, 30%, 35%);
 }
 
-.quran-arabic-title::before,
+/* .quran-arabic-title::before,
 .quran-arabic-title::after {
     content: '✦';
     position: absolute;
@@ -51,26 +50,26 @@
     font-size: 2rem;
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     animation: sparkle 2s ease-in-out infinite;
-}
+} */
 
-.quran-arabic-title::before {
+/* .quran-arabic-title::before {
     left: -0.5rem;
 }
 
 .quran-arabic-title::after {
     right: -0.5rem;
-}
+} */
 
-@keyframes sparkle {
+/* @keyframes sparkle {
     0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
     50% { opacity: 0.6; transform: translateY(-50%) scale(1.2); }
-}
+} */
 
 .quran-english-title {
     font-family: 'Cinzel', 'Georgia', serif;
     font-size: 1rem;
     font-weight: 600;
-    color: #ccfbf1;
+    color: hsl(30, 30%, 35%);
     margin: 0 0 1.5rem 0;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -78,13 +77,13 @@
     position: relative;
 }
 
-.quran-english-title::before,
+/* .quran-english-title::before,
 .quran-english-title::after {
     content: '◆';
     margin: 0 1rem;
     color: #ffd700;
     font-size: 0.8rem;
-}
+} */
 
 .quran-search-bar {
     display: flex;
@@ -113,7 +112,7 @@
     outline: none;
     padding: 0rem 1.5rem;
     font-size: .7rem;
-    color: #053939;
+    color: hsl(30, 30%, 35%);
     background: transparent;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -132,7 +131,7 @@
 }
 
 .quran-search-btn {
-    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    background: hsl(30, 30%, 35%);
     color: #ffffff;
     border: none;
     padding: .3rem .5rem;
@@ -143,7 +142,6 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
 }
 
 .dark .quran-search-btn {
@@ -152,7 +150,7 @@
 }
 
 .quran-search-btn:hover {
-    background: linear-gradient(135deg, #0d9488 0%, #0c5d51 100%);
+    background: hsl(31, 40%, 25%);
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4);
 }
@@ -256,7 +254,7 @@
 .hadith-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #053939;
+    color: hsl(30, 40%, 30%);
     margin-bottom: 0.5rem;
 }
 
@@ -268,7 +266,7 @@
 .quran-subtitle,
 .hadith-subtitle {
     font-size: 1.1rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .quran-subtitle,
@@ -284,11 +282,11 @@
 
 .verse-of-day-card,
 .hadith-of-day-card {
-    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-    border: 3px solid #14b8a6;
+    background: #FFE1AF;
+    border: 3px solid #FFD700;
     border-radius: 1.5rem;
     padding: 0;
-    box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+   
     overflow: hidden;
     animation: fadeInUp 0.6s ease-out;
 }
@@ -313,8 +311,8 @@
 
 .quran-container .card-header,
 .hadith-container .card-header {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     padding: 1.5rem;
     text-align: center;
 }
@@ -341,7 +339,7 @@
 .hadith-text {
     font-size: 1.8rem;
     font-weight: 600;
-    color: #053939;
+    color: hsl(30, 40%, 30%);
     margin-bottom: 1.5rem;
     line-height: 2.5;
     font-family: 'Traditional Arabic', 'Amiri', 'Times New Roman', serif;
@@ -355,7 +353,7 @@
 
 .verse-translation {
     font-size: 1.2rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 1.5rem;
     line-height: 1.8;
     font-style: italic;
@@ -368,10 +366,10 @@
 .verse-reference,
 .hadith-reference {
     font-size: 1rem;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     font-weight: 600;
     padding-top: 1rem;
-    border-top: 2px solid #14b8a6;
+    border-top: 2px solid hsl(30, 25%, 75%);
 }
 
 .dark .verse-reference,
@@ -382,7 +380,7 @@
 
 .hadith-narrator {
     font-size: 1rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 0.75rem;
     font-style: italic;
 }
@@ -401,10 +399,10 @@
 .quran-container .search-container,
 .hadith-container .search-container {
     background: white;
-    border: 2px solid #14b8a6;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+    box-shadow: 0 4px 15px rgba(160, 128, 96, 0.12);
 }
 
 .dark .quran-container .search-container,
@@ -417,7 +415,7 @@
 .quran-container .search-title,
 .hadith-container .search-title {
     font-size: 1.5rem;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -440,7 +438,7 @@
     flex: 1;
     min-width: 250px;
     padding: 0.75rem 1.5rem;
-    border: 2px solid #14b8a6;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 0.5rem;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -456,8 +454,8 @@
 .quran-container .search-input:focus,
 .hadith-container .search-input:focus {
     outline: none;
-    border-color: #0f766e;
-    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+    border-color: hsl(30, 30%, 35%);
+    box-shadow: 0 0 0 3px rgba(160, 128, 96, 0.08);
 }
 
 .dark .quran-container .search-input:focus,
@@ -469,7 +467,7 @@
 .quran-container .collection-select,
 .hadith-container .collection-select {
     padding: 0.75rem 1.5rem;
-    border: 2px solid #14b8a6;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 0.5rem;
     font-size: 1rem;
     background: white;
@@ -499,23 +497,23 @@
 
 .quran-container .btn-primary,
 .hadith-container .btn-primary {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
+    box-shadow: 0 4px 15px rgba(160, 128, 96, 0.12);
 }
 
 .quran-container .btn-primary:hover,
 .hadith-container .btn-primary:hover {
-    background: linear-gradient(135deg, #0d6458 0%, #053329 100%);
-    box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
+    background: hsl(31, 40%, 25%);
+    box-shadow: 0 6px 20px rgba(160, 128, 96, 0.16);
     transform: translateY(-2px);
 }
 
 .quran-container .btn-secondary,
 .hadith-container .btn-secondary {
     background: white;
-    color: #0f766e;
-    border: 2px solid #0f766e;
+    color: hsl(30, 30%, 35%);
+    border: 2px solid hsl(30, 30%, 35%);
 }
 
 .dark .quran-container .btn-secondary,
@@ -546,7 +544,7 @@
 .quran-container .search-results-title,
 .hadith-container .search-results-title {
     font-size: 1.2rem;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -571,7 +569,7 @@
 
 .chapters-title {
     font-size: 1rem;
-    color: #064e3b;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 2rem;
     font-weight: 700;
     text-align: center;
@@ -613,7 +611,7 @@
 
 .surah-text-group:hover .surah-name-text,
 .surah-text-group:hover .surah-translation-text {
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .surah-text-group:hover .surah-name-text,
@@ -623,7 +621,7 @@
 
 .surah-number-text {
     font-size: .5rem;
-    color: #064e3b;
+    color: hsl(30, 30%, 35%);
     font-weight: 600;
     min-width: 40px;
 }
@@ -634,7 +632,7 @@
 
 .surah-name-text {
     font-size: .75rem;
-    color: #0d9488;
+    color: hsl(30, 30%, 35%);
     font-weight: 600;
     flex-shrink: 0;
     transition: color 0.3s ease;
@@ -646,7 +644,7 @@
 
 .surah-translation-text {
     font-size: .75rem;
-    color: #0d9488;
+    color: hsl(30, 30%, 35%);
     font-weight: 400;
     font-style: italic;
     transition: color 0.3s ease;
@@ -659,7 +657,7 @@
 /* Old styles for collections and hadith */
 .section-title {
     font-size: 2rem;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 2rem;
     font-weight: bold;
     text-align: center;
@@ -677,10 +675,10 @@
 
 .collection-card {
     background: white;
-    border: 2px solid #14b8a6;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 1rem;
     padding: 1.5rem;
-    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.15);
+    box-shadow: 0 4px 15px rgba(160, 128, 96, 0.08);
     transition: all 0.3s ease;
     cursor: pointer;
     display: flex;
@@ -696,8 +694,8 @@
 
 .collection-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(20, 184, 166, 0.3);
-    border-color: #0f766e;
+    box-shadow: 0 8px 25px rgba(160, 128, 96, 0.12);
+    border-color: hsl(30, 30%, 35%);
 }
 
 .dark .collection-card:hover {
@@ -711,7 +709,7 @@
 
 .collection-name {
     font-size: 1.3rem;
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
@@ -722,7 +720,7 @@
 
 .collection-description {
     font-size: 0.95rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 0.75rem;
 }
 
@@ -742,8 +740,8 @@
 .surah-revelation,
 .stat-item {
     font-size: 0.85rem;
-    color: #0f766e;
-    background: #f0fdfa;
+    color: hsl(30, 30%, 35%);
+    background: #fffaf0;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     font-weight: 600;
@@ -831,8 +829,8 @@
 
 .quran-container .modal-header,
 .hadith-container .modal-header {
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -878,7 +876,7 @@
 .quran-container .modal-footer,
 .hadith-container .modal-footer {
     padding: 1.5rem 2rem;
-    border-top: 2px solid #14b8a6;
+    border-top: 2px solid hsl(30, 25%, 75%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -892,7 +890,7 @@
 
 .quran-container .page-info,
 .hadith-container .page-info {
-    color: #0f766e;
+    color: hsl(30, 30%, 35%);
     font-weight: 600;
 }
 
@@ -911,11 +909,11 @@
 
 .verse-card,
 .hadith-card {
-    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-    border: 2px solid #14b8a6;
+    background: #fffaf0;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.15);
+    box-shadow: 0 4px 15px rgba(160, 128, 96, 0.08);
     position: relative;
     transition: all 0.3s ease;
 }
@@ -944,8 +942,8 @@
     right: 1rem;
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #0f766e 0%, #064e3b 100%);
-    color: white;
+    background: hsl(30, 25%, 75%);
+    color: hsl(30, 30%, 35%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -959,7 +957,7 @@
 .hadith-container .loading {
     text-align: center;
     padding: 3rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     font-size: 1.1rem;
 }
 
@@ -983,11 +981,11 @@
 
 .quran-container .info-message,
 .hadith-container .info-message {
-    background: #f0fdfa;
-    border: 2px solid #14b8a6;
+    background: #fffaf0;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 0.5rem;
     padding: 2rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .quran-container .info-message,
@@ -1011,7 +1009,7 @@
 .hadith-container .no-results {
     text-align: center;
     padding: 2rem;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     font-size: 1.1rem;
 }
 
@@ -1141,3 +1139,4 @@
         font-size: 1.1rem;
     }
 }
+

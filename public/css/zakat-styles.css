@@ -1,10 +1,108 @@
 /* Zakat module styles */
-.zakat-container { max-width: 1000px; margin: 2rem auto; padding: 1rem; }
-.zakat-card, .results-card { background:#fff; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.06); padding:1.25rem; margin-bottom:1rem; }
-.grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:1rem; }
-.field { display:flex; flex-direction:column; gap:.5rem; }
-.field input, .field select { padding:.6rem .8rem; border:1px solid #e2e8f0; border-radius:8px; }
-.actions { margin-top:1rem; }
-.btn-primary { background: linear-gradient(135deg, #0f766e, #14b8a6); color:#fff; border:none; padding:.75rem 1rem; border-radius:10px; cursor:pointer; }
-.muted { color:#64748b; }
-@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+.zakat-container {
+    /* max-width: 1000px; */ /* <-- Old */
+    max-width: 1000px; /* <-- Matched to your base.css nav container */
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.zakat-container h1{
+    margin-bottom: 1rem;
+    color: hsl(30, 40%, 30%);
+}
+
+
+.zakat-card, .results-card {
+    /* background: #fff; */ /* <-- Old */
+    background: hsl(30, 25%, 88%); /* <-- A very light, warm off-white */
+    border-radius: 12px;
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.06); */ /* <-- Old */
+    box-shadow: 0 8px 25px rgba(117, 86, 46, 0.1); /* <-- A warmer, softer shadow */
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid hsl(30, 20%, 45%); /* <-- Subtle border to match main bg */
+    transition: all 0.3s ease;
+}
+
+/* --- Dark Mode Card Styles --- */
+.dark .zakat-card, .dark .results-card {
+    background: rgba(4, 47, 36, 0.9); /* <-- Matches your dark nav background */
+    border: 1px solid #064e3b; /* <-- Matches your dark dropdown border */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.field input, .field select {
+    padding: .6rem .8rem;
+    /* border: 1px solid #e2e8f0; */ /* <-- Old */
+    border: 1px solid hsl(30, 20%, 45%); /* <-- Themed border */
+    border-radius: 8px;
+    background: hsl(30, 25%, 80%);
+    transition: all 0.3s ease;
+}
+
+.field input:focus, .field select:focus {
+    outline: none;
+    border-color: hsl(30, 40%, 30%);
+    box-shadow: 0 0 0 3px hsla(30, 40%, 30%, 0.2);
+}
+
+/* --- Dark Mode Input Styles --- */
+.dark .field input, .dark .field select {
+    background: hsl(150, 30%, 12%);
+    border: 1px solid #064e3b;
+    color: #e0f7fa;
+}
+
+.dark .field input:focus, .dark .field select:focus {
+    border-color: #14b8a6; /* Use original teal as an accent color */
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+}
+
+.actions {
+    margin-top: 1rem;
+}
+
+.btn-primary {
+    /* background: linear-gradient(135deg, #0f766e, #14b8a6); */ /* <-- Old Teal */
+    background: hsl(30, 20%, 45%); /* <-- New Beige/Brown Gradient */
+    color: #fff;
+    border: none;
+    padding: .75rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600; /* <-- Added for better readability */
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(117, 86, 46, 0.25);
+}
+
+.muted {
+    /* color: #64748b; */ /* <-- Old */
+    color: hsl(30, 20%, 45%); /* <-- Warmer muted color */
+    margin-bottom: 2rem;
+}
+
+.dark .muted {
+    color: hsl(150, 20%, 70%);
+}
+
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}

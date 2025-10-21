@@ -2,14 +2,33 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/qibla-google-style.css') }}">
+<style>
+    /* Light-mode override for inline SVGs so they match the beige palette without changing SVG markup */
+    body:not(.dark) .marks-svg line,
+    body:not(.dark) .marks-svg text,
+    body:not(.dark) .compass-image circle,
+    body:not(.dark) .compass-image polygon,
+    body:not(.dark) .pin-svg stop,
+    body:not(.dark) .pin-svg circle {
+        stroke: hsl(30,30%,35%) !important;
+        fill: hsl(30,30%,35%) !important;
+        color: hsl(30,30%,35%) !important;
+    }
+    body:not(.dark) .compass-image circle[fill] {
+        fill: #fffaf0 !important;
+    }
+    body:not(.dark) .pin-svg path { fill: #FFE1AF !important; }
+    /* Small layout/spacing tweaks for qibla page */
+    .compass-section { padding: 1rem 0 2rem; }
+    .location-info-grid { gap: 1rem; }
+    .instructions-card { margin-top: 1.5rem; }
+    .saved-locations-panel { padding: 1rem; }
+    .saved-location-card { min-height: 120px; display:flex; flex-direction:column; justify-content:space-between; }
+</style>
 @endpush
 
 @section('content')
     <div class="container">
-        <!-- Theme Toggle Button -->
-        <button onclick="toggleTheme()" class="theme-btn-floating">
-            <span id="themeIcon">🌙</span>
-        </button>
 
         <!-- Page Header -->
         <div class="qibla-header">
@@ -107,10 +126,10 @@
                                         </svg>
                                         
                                         <!-- Mecca/Kaaba Container -->
-                                        <div class="mecca-container">
+                                        <!-- <div class="mecca-container">
                                             <div class="mecca-shadow"></div>
                                             <div class="mecca-icon">🕋</div>
-                                        </div>
+                                        </div> -->
                                         
                                         <!-- Qibla Direction Arrow (rotates to point to Kaaba) -->
                                         <div class="qibla-direction-indicator" id="qiblaDirectionRing">
@@ -147,7 +166,7 @@
             <div class="location-info-grid">
                 <!-- Current Location Card -->
                 <div class="info-card">
-                    <div class="info-card-icon">📍</div>
+                    <div class="info-card-icon"></div>
                     <div class="info-card-title">Your Location</div>
                     <div class="info-card-value" id="currentLocationName">
                         @if($currentLocation)
@@ -211,7 +230,7 @@
 
         <!-- Saved Locations Panel (Hidden by default) -->
         <div class="saved-locations-panel" id="savedLocationsPanel" style="display: none;">
-            <h3 class="panel-title">📍 Your Saved Locations</h3>
+            <h3 class="panel-title"> Your Saved Locations</h3>
             
             @if($savedLocations && $savedLocations->count() > 0)
                 <div class="saved-locations-grid" id="savedLocationsList">
@@ -298,29 +317,10 @@
         let deviceOrientation = null;
 
         // Theme toggle functionality
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            if (newTheme === 'dark') {
-                html.classList.add('dark');
-                document.getElementById('themeIcon').textContent = '☀️';
-            } else {
-                html.classList.remove('dark');
-                document.getElementById('themeIcon').textContent = '🌙';
-            }
-            
-            localStorage.setItem('theme', newTheme);
-        }
+        
 
         // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.getElementById('themeIcon').textContent = '☀️';
-            }
 
             // Initialize device orientation if available
             if (window.DeviceOrientationEvent) {
@@ -394,9 +394,11 @@
             try {
                 const response = await fetch('{{ route("qibla.calculate") }}', {
                     method: 'POST',
+                    credentials: 'same-origin',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({
                         latitude: lat,
@@ -436,6 +438,15 @@
             // Update coordinates display
             document.getElementById('currentCoords').textContent = lat.toFixed(4) + ', ' + lng.toFixed(4);
             document.getElementById('currentLocationName').textContent = 'Current Location';
+            // populate hidden save fields so the save form has data
+            const saveLat = document.getElementById('save_latitude');
+            const saveLng = document.getElementById('save_longitude');
+            const saveCity = document.getElementById('save_city');
+            const saveCountry = document.getElementById('save_country');
+            if (saveLat) saveLat.value = lat;
+            if (saveLng) saveLng.value = lng;
+            if (saveCity && !saveCity.value) saveCity.value = 'Current Location';
+            if (saveCountry && !saveCountry.value) saveCountry.value = '';
         }
 
         // Handle device orientation for mobile compass
@@ -475,17 +486,23 @@
         document.getElementById('saveLocationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            // ensure coords present
+            if (!document.getElementById('save_latitude').value || !document.getElementById('save_longitude').value) {
+                alert('Please detect your location first before saving.');
+                return;
+            }
+
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
 
             try {
                 const response = await fetch('{{ route("qibla.save") }}', {
                     method: 'POST',
+                    credentials: 'same-origin',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify(data)
+                    body: formData
                 });
 
                 const result = await response.json();
@@ -512,7 +529,7 @@
         // Load a saved location
         async function loadSavedLocation(id) {
             try {
-                const response = await fetch(`/qibla/load/${id}`);
+                const response = await fetch(`/qibla/load/${id}`, { credentials: 'same-origin', headers: { 'Accept': 'application/json' } });
                 const data = await response.json();
 
                 if (data.success) {
@@ -532,6 +549,15 @@
 
                     // Show save button
                     document.getElementById('saveBtn').style.display = 'inline-flex';
+                    // populate hidden save fields with loaded location so user can save a copy / edit
+                    const saveLat = document.getElementById('save_latitude');
+                    const saveLng = document.getElementById('save_longitude');
+                    const saveCity = document.getElementById('save_city');
+                    const saveCountry = document.getElementById('save_country');
+                    if (saveLat) saveLat.value = data.location.latitude;
+                    if (saveLng) saveLng.value = data.location.longitude;
+                    if (saveCity) saveCity.value = data.location.city || '';
+                    if (saveCountry) saveCountry.value = data.location.country || '';
                     
                     alert('Location loaded successfully!');
                 }
@@ -550,8 +576,10 @@
             try {
                 const response = await fetch(`/qibla/saved/${id}`, {
                     method: 'DELETE',
+                    credentials: 'same-origin',
                     headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
                     }
                 });
 
@@ -572,8 +600,10 @@
             try {
                 const response = await fetch(`/qibla/favorite/${id}`, {
                     method: 'POST',
+                    credentials: 'same-origin',
                     headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
                     }
                 });
 

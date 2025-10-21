@@ -19,6 +19,15 @@ body:not(.dark) select:disabled {
     cursor: not-allowed;
 }
 
+/* Add this rule to the top of prayer-styles.css */
+
+/* Fix for hamburger menu being hidden by overflow */
+.container {
+    overflow-x: visible !important;
+}
+
+
+
 /* pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp */
 /* ========================================
    TOP SECTION - 2 COLUMN LAYOUT

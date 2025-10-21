@@ -6,8 +6,7 @@
 
     #radius:focus {
         outline: none;
-        border-color: #0f766e;
-        box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+        border-color: hsl(30, 40%, 30%);
     }
     .dark #radius {
         background: linear-gradient(135deg, #064e3b, #053b2f);
@@ -27,12 +26,12 @@
         <!-- All Controls in One Line -->
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
             <button class="btn-primary" id="detectLocationBtn" style="white-space: nowrap;">
-                <span class="btn-icon">📍</span> Detect My Location
+                <span class="btn-icon"></span> Detect My Location
             </button>
             
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <label style="margin: 0; font-size: 0.9rem; font-weight: 600; white-space: nowrap; color: #0f766e;">Search Radius:</label>
-                <select id="radius" style="padding: 0.5rem 0.8rem; border-radius: 0.5rem; border: 2px solid #14b8a6; font-size: 0.9rem; font-weight: 600; background: linear-gradient(135deg, #ffffff, #f0fdfa); color: #0f766e; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);">
+                <label style="margin: 0; font-size: 0.9rem; font-weight: 600; white-space: nowrap; color: hsl(30, 30%, 30%);">Search Radius:</label>
+                <select id="radius" style="padding: 0.5rem 0.8rem; border-radius: 0.5rem; border: 2px solid hsla(29, 66%, 15%, 1.00); font-size: 0.9rem; font-weight: 600; background: hsla(27, 48%, 91%, 1.00); color: hsl(30, 40%, 35%); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);">
                     <option value="1000">1 km</option>
                     <option value="2000">2 km</option>
                     <option value="5000" selected>5 km</option>
@@ -42,10 +41,10 @@
             </div>
             
             <button class="btn-primary" id="findMosquesBtn" style="white-space: nowrap;">
-                <span class="btn-icon">🔍</span> Find Nearby Mosques
+                 Find Nearby Mosques
             </button>
             
-            <div id="locationInfo" style="display: none; margin: 0; padding: 0.5rem 1rem; background: rgba(15, 118, 110, 0.1); border-radius: 0.375rem; font-size: 0.85rem; white-space: nowrap;">
+            <div id="locationInfo" style="display: none; margin: 0; padding: 0.5rem 1rem; background: hsla(30, 61%, 88%, 1.00) ; border-radius: 0.375rem; font-size: 0.85rem; white-space: nowrap;">
                 <strong>Your Location:</strong> 
                 <span id="locationText">-</span>
             </div>
@@ -218,7 +217,7 @@ function displayMosques(mosques) {
                 <div class="mosque-header">
                     <h4 class="mosque-name">🕌 ${mosque.name}</h4>
                 </div>
-                <p class="mosque-address">📍 ${mosque.address}</p>
+                <p class="mosque-address"> ${mosque.address}</p>
                 ${extraInfoHtml}
                 <div class="mosque-meta">
                     <div class="distance">

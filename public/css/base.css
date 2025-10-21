@@ -10,6 +10,11 @@
     box-sizing: border-box;
 }
 
+/* Ensure root fills viewport so flex layout (min-h-screen) works reliably */
+html, body {
+    height: 100%;
+}
+
 @font-face {
     font-family: 'a1';
     src: url('/fonts/a1.ttf') format('truetype');
@@ -33,7 +38,8 @@ body {
     font-family: 'Cinzel', 'Georgia', serif;
     color: #1f2937;
     min-height: 100vh;
-    background-attachment: fixed;
+    /* background-attachment: fixed can cause rendering issues and visual gaps in some browsers; use scroll for stability */
+    background-attachment: scroll;
     transition: all 0.3s ease;
 }
 
@@ -148,7 +154,7 @@ main {
 
 .container { max-width: 95%; margin: 0 auto; padding: 0 1rem; }
 
-/* Floating theme toggle button */
+/* Floating theme toggle button 
 .theme-btn-floating {
     position: fixed;
     top: 1.5rem;
@@ -172,7 +178,7 @@ main {
     transform: scale(1.1) rotate(15deg);
     background: linear-gradient(135deg, #8b6f47, #75562e, #5f4520);
     box-shadow: 0 12px 32px rgba(160, 128, 96, 0.5);
-}
+}*/
 
 /* Footer */
 .footer {
@@ -198,6 +204,12 @@ main {
 .footer .copyright-year { font-weight: 600; color: hsl(30, 30%, 35%); }
 .footer .developer-name { font-weight: 700; color: hsl(30, 30%, 35%);}
 
+/* Safety: remove any unexpected shadows or borders under the footer that may appear as a black strip */
+.footer {
+    box-shadow: none;
+    border-top: none;
+}
+
 /* Alerts */
 .alert { padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
 .alert-error { background-color: rgba(239, 68, 68, 0.95); color: white; }
@@ -207,13 +219,13 @@ main {
 
 /* Responsive tweaks for theme button */
 @media (max-width: 640px) {
-    .theme-btn-floating {
+    /* .theme-btn-floating {
         top: 1rem;
         right: 1rem;
         width: 3rem;
         height: 3rem;
         font-size: 1.25rem;
-    }
+    } */
 }
 /* =============================================== */
 /* == Breeze Navigation Override (Final Fix)    == */
@@ -243,7 +255,7 @@ nav .hidden a.inline-flex:hover {
     transform: translateY(-3px);
 }
 
-/* Create the underline element (initially hidden) */
+/* Create the underline element (initially hidden) 
 nav .hidden a.inline-flex::after {
     content: '';
     position: absolute;
@@ -255,7 +267,7 @@ nav .hidden a.inline-flex::after {
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animate the underline on hover */
+Animate the underline on hover */
 nav .hidden a.inline-flex:hover::after {
     width: 100%;
 }
@@ -289,4 +301,105 @@ nav a.inline-flex[aria-current="page"] {
 .dark nav a.inline-flex[aria-current="page"] {
     color: #ffffff !important;
     border-bottom-color: #ffffff !important;
+}
+
+/* ======================================== */
+/* == Custom Navigation Dropdown Styles  == */
+/* ======================================== */
+
+/* The container for each nav item */
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* The main link that triggers the dropdown */
+/* Find and replace this rule in your base.css file */
+.nav-item .nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.5rem;
+    height: 100%;
+    
+    /* ADD THESE TWO LINES */
+    font-size: 0.78rem; /* Matches your other nav links */
+    font-weight: 600;   /* Matches your other nav links */
+}
+/* The dropdown menu panel */
+/* Find and replace the entire .dropdown-menu rule with this one */
+.dropdown-menu {
+    display: block;
+    position: fixed;   /* Changed to fixed to align with the browser window */
+    top: 4rem;         /* This is the height of your navbar (h-16 = 4rem) */
+    left: 0;
+    right: 0;          /* These two ensure it spans the full width perfectly */
+    width: 100%;
+
+    background-color: hsl(30, 30%, 85%);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-top: 1px solid hsl(30, 30%, 75%);
+    padding: 1rem 0;
+    z-index: 50;
+    
+    /* Keep the hide/show animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-out;
+}
+
+.dark .dropdown-menu {
+    background-color: #042f24; /* Dark green background */
+    border-top: 1px solid #064e3b;
+}
+
+/* Show the menu on hover */
+.nav-item.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* The content wrapper inside the menu */
+.dropdown-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* The individual links inside the dropdown */
+.dropdown-item {
+    color: hsl(30, 30%, 35%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    color: hsl(30, 40%, 20%);
+}
+
+.dark .dropdown-item {
+    color: #e0f7fa;
+}
+
+.dark .dropdown-item:hover {
+    color: #ffffff;
+}
+/* ======================================== */
+/* ==   Responsive Hamburger Menu Fix    == */
+/* ======================================== */
+
+/* * This rule forcefully hides the hamburger menu on screens 
+ * wider than 640px (the 'sm' breakpoint), overriding any
+ * conflicting styles from other page-specific CSS files.
+*/
+@media (min-width: 640px) {
+    .sm\:hidden {
+        display: none !important;
+    }
 }

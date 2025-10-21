@@ -200,7 +200,6 @@
                 <!-- Submit Button -->
                 <div class="form-actions">
                     <button type="submit" class="btn-donate" id="submitBtn">
-                        <span class="btn-icon">💖</span>
                         <span class="btn-text">Donate Now</span>
                     </button>
                 </div>

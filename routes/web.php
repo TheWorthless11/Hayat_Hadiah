@@ -107,6 +107,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.dashboard');
     })->name('dashboard');
 
+    // Admin users JSON endpoint (for live admin UI)
+    Route::get('/users/list', [\App\Http\Controllers\AdminController::class, 'usersList'])->name('users.list');
+
     // Your Original Admin Donation Routes (now protected)
     Route::prefix('donations')->name('donations.')->group(function () {
         Route::get('/', [AdminDonationController::class, 'index'])->name('index');

@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="zakat-container">
-    <h1>💰 Zakat Calculator</h1>
+    <h1>Zakat Calculator</h1>
     <p class="muted">Calculate your zakat based on your assets, liabilities and nisab.</p>
 
     <div class="zakat-card">

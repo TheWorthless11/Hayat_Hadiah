@@ -8,26 +8,16 @@
 <div class="hadith-container">
     <!-- Header -->
     <header class="hadith-header">
-        <h1 class="hadith-title">📚 Hadith Collections</h1>
+        <h1 class="hadith-title">Hadith Collections</h1>
         <p class="hadith-subtitle">Authentic sayings and teachings of Prophet Muhammad ﷺ</p>
     </header>
 
-    <!-- Hadith of the Day -->
-    <section class="hadith-of-day-section">
-        <div class="hadith-card hadith-of-day-card">
-            <div class="card-header">
-                <h3>🌟 Hadith of the Day</h3>
-            </div>
-            <div class="card-body" id="hadithOfDayContent">
-                <div class="loading">Loading hadith...</div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Search Section -->
     <section class="search-section">
         <div class="search-container">
-            <h3 class="search-title">🔍 Search Hadith</h3>
+            <h3 class="search-title">Search Hadith</h3>
             <div class="search-box">
                 <input 
                     type="text" 
@@ -42,32 +32,44 @@
                     @endforeach
                 </select>
                 <button id="searchBtn" class="btn btn-primary">
-                    <span class="btn-icon">🔍</span> Search
+                     Search
                 </button>
             </div>
             <div id="searchResults" class="search-results"></div>
         </div>
     </section>
 
+    <!-- Hadith of the Day -->
+    <section class="hadith-of-day-section">
+        <div class="hadith-card hadith-of-day-card">
+            <div class="card-header">
+                <h3>Hadith of the Day</h3>
+            </div>
+            <div class="card-body" id="hadithOfDayContent">
+                <div class="loading">Loading hadith...</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Collections Grid -->
     <section class="collections-section">
-        <h2 class="section-title">📖 Hadith Collections</h2>
+        <h2 class="section-title">Hadith Collections</h2>
         <div class="collections-grid">
             @foreach($collections as $collection)
             <div class="collection-card" onclick="loadCollection('{{ $collection['slug'] }}')">
-                <div class="collection-icon">
+                <!-- <div class="collection-icon">
                     @if($collection['slug'] === 'bukhari' || $collection['slug'] === 'muslim')
                         ⭐
                     @else
                         📘
                     @endif
-                </div>
+                </div> -->
                 <div class="collection-info">
                     <h3 class="collection-name">{{ $collection['name'] }}</h3>
                     <p class="collection-description">{{ $collection['description'] }}</p>
                     <div class="collection-stats">
-                        <span class="stat-item">📚 {{ $collection['books'] }} books</span>
-                        <span class="stat-item">📝 {{ $collection['hadiths'] }} hadiths</span>
+                        <span class="stat-item"> {{ $collection['books'] }} books</span>
+                        <span class="stat-item">{{ $collection['hadiths'] }} hadiths</span>
                     </div>
                 </div>
             </div>
@@ -130,7 +132,7 @@
                 `;
             } else {
                 document.getElementById('hadithOfDayContent').innerHTML = `
-                    <p class="info-message">📥 No hadiths available yet. Please add hadiths to the database.</p>
+                    <p class="info-message"> No hadiths available yet. Please add hadiths to the database.</p>
                 `;
             }
         } catch (error) {
@@ -219,7 +221,7 @@
                 if (data.hadiths.length === 0) {
                     document.getElementById('collectionContent').innerHTML = `
                         <div class="info-message">
-                            <p>📥 This collection is not yet available in the database.</p>
+                            <p>This collection is not yet available in the database.</p>
                             <p>We're working on adding all hadith collections soon!</p>
                         </div>
                     `;

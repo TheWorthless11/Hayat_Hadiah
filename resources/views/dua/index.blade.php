@@ -16,12 +16,12 @@
         </div>
 
         <div class="inline-actions">
-            <input id="duaSearch" placeholder="Search duas (Arabic, transliteration, translation)" />
-            <select id="subsectionFilter">
+            <input id="duaSearch" placeholder="Search" />
+            <!-- <select id="subsectionFilter">
                 <option value="">All subsections</option>
                 <option value="after_meal">After finishing meal</option>
                 <option value="arafat">Arafat</option>
-            </select>
+            </select> -->
             <button id="addDuaBtn">+ Add Dua</button>
         </div>
     </div>
@@ -48,12 +48,12 @@
 
 <script>
 const api = {
-    list: (params) => fetch(`/duas?${new URLSearchParams(params)}`).then(r => r.json()),
-    store: (data) => fetch('/duas', {method:'POST', headers:{'Content-Type':'application/json','X-CSRF-TOKEN':'{{ csrf_token() }}'}, body: JSON.stringify(data)}).then(r=>{
+    list: (params) => fetch(`/duas?${new URLSearchParams(params)}`, { credentials: 'same-origin', headers: { 'Accept': 'application/json' } }).then(r => r.json()),
+    store: (data) => fetch('/duas', {method:'POST', credentials: 'same-origin', headers:{'Content-Type':'application/json','X-CSRF-TOKEN':'{{ csrf_token() }}','Accept':'application/json'}, body: JSON.stringify(data)}).then(r=>{
         if (r.status===401) throw {unauth:true}; return r.json();
     }),
-    update: (id, data) => fetch(`/duas/${id}`, {method:'PUT', headers:{'Content-Type':'application/json','X-CSRF-TOKEN':'{{ csrf_token() }}'}, body: JSON.stringify(data)}).then(r=>{ if (r.status===401) throw {unauth:true}; return r.json(); }),
-    destroy: (id) => fetch(`/duas/${id}`, {method:'DELETE', headers:{'X-CSRF-TOKEN':'{{ csrf_token() }}'}}).then(r=>{ if (r.status===401) throw {unauth:true}; return r.json(); })
+    update: (id, data) => fetch(`/duas/${id}`, {method:'PUT', credentials: 'same-origin', headers:{'Content-Type':'application/json','X-CSRF-TOKEN':'{{ csrf_token() }}','Accept':'application/json'}, body: JSON.stringify(data)}).then(r=>{ if (r.status===401) throw {unauth:true}; return r.json(); }),
+    destroy: (id) => fetch(`/duas/${id}`, {method:'DELETE', credentials: 'same-origin', headers:{'X-CSRF-TOKEN':'{{ csrf_token() }}','Accept':'application/json'}}).then(r=>{ if (r.status===401) throw {unauth:true}; return r.json(); })
 }
 
 let state = {category:'General', subsection:'', q:''};
@@ -99,6 +99,26 @@ function onDelete(e){
 function openModal(title, id=null){
     document.getElementById('modalTitle').textContent = title;
     window._editingDuaId = id;
+    // prefill fields when adding
+    const cat = document.getElementById('duaCategory');
+    const sub = document.getElementById('duaSubsection');
+    const titleEl = document.getElementById('duaTitle');
+    const arabic = document.getElementById('duaArabic');
+    const translit = document.getElementById('duaTranslit');
+    const trans = document.getElementById('duaTrans');
+
+    if (!id) {
+        // new dua: clear fields and set category default to current tab
+        cat.value = state.category || '';
+        sub.value = '';
+        titleEl.value = '';
+        arabic.value = '';
+        translit.value = '';
+        trans.value = '';
+    } else {
+        // editing: for simplicity, leave fields as-is (could fetch existing dua)
+    }
+
     document.getElementById('duaModal').style.display='block';
 }
 function closeModal(){ document.getElementById('duaModal').style.display='none'; }

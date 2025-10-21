@@ -7,33 +7,22 @@
 
         <title>@yield('title', config('app.name', 'Hayat Hadia'))</title>
 
-        <!-- Your Original Fonts -->
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-        
-        <!-- Breeze Font -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400;500,600&display=swap" rel="stylesheet" />
 
-        <!-- Breeze/Vite Styles (Loads Tailwind components) -->
+        <!-- Scripts & Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
-        <!-- Your Original CSS Files -->
         <link rel="stylesheet" href="{{ asset('css/base.css') }}">
         <link rel="stylesheet" href="{{ asset('css/chatbot-widget.css') }}">
-        
-        <!-- Your Page-Specific Styles -->
         @stack('styles')
     </head>
     <body class="font-sans antialiased">
         
-        <!-- Your Original Theme Toggle Button -->
-        <button onclick="toggleTheme()" class="theme-btn-floating">
-            <span id="themeIcon">🌙</span>
-        </button>
-
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -46,42 +35,49 @@
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-1">
                 {{ $slot }}
             </main>
 
-            <!-- Your Original Copyright Footer -->
+            <!-- Copyright Footer -->
             <footer class="footer">
                 <p>&copy; <span class="copyright-year"></span> <span class="developer-name">Code by Mahhia</span>. All rights reserved.</p>
             </footer>
         </div>
 
-        <!-- Your Original Theme Toggle Script -->
+        <!-- NEW AND IMPROVED THEME TOGGLE SCRIPT -->
         <script>
+            // This function handles the logic of switching the theme
             function toggleTheme() {
                 const html = document.documentElement;
-                const currentTheme = localStorage.getItem('theme') || 'light';
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                const isDarkMode = html.classList.contains('dark');
                 
-                if (newTheme === 'dark') {
-                    html.classList.add('dark');
-                    document.getElementById('themeIcon').textContent = '☀️';
-                } else {
+                if (isDarkMode) {
                     html.classList.remove('dark');
-                    document.getElementById('themeIcon').textContent = '🌙';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
                 }
-                
-                localStorage.setItem('theme', newTheme);
             }
 
-            // Load saved theme on page load and update year
+            // This runs when the page is loaded
             document.addEventListener('DOMContentLoaded', function() {
-                const savedTheme = localStorage.getItem('theme') || 'light';
+                // 1. Check for a saved theme in localStorage and apply it
+                const savedTheme = localStorage.getItem('theme');
                 if (savedTheme === 'dark') {
                     document.documentElement.classList.add('dark');
-                    document.getElementById('themeIcon').textContent = '☀️';
                 }
+
+                // 2. Find the new theme toggle button by its ID
+                const themeToggleButton = document.getElementById('theme-toggle-btn');
                 
+                // 3. If the button exists, attach a click event listener to it
+                if (themeToggleButton) {
+                    themeToggleButton.addEventListener('click', toggleTheme);
+                }
+
+                // 4. Update the copyright year
                 const yearSpan = document.querySelector('.copyright-year');
                 if (yearSpan) {
                     yearSpan.textContent = new Date().getFullYear();
@@ -96,4 +92,3 @@
         @stack('scripts')
     </body>
 </html>
-

@@ -17,7 +17,9 @@ class DuaController extends Controller
             $subsection = $request->query('subsection', null);
             $q = $request->query('q', null);
 
-            $query = Dua::query()->where('category', $category);
+            // Normalize incoming category for matching (case-insensitive, trimmed)
+            $category = trim((string) $category);
+            $query = Dua::query()->whereRaw('LOWER(TRIM(category)) = ?', [strtolower($category)]);
 
             if ($subsection) {
                 $query->where('subsection', $subsection);
@@ -67,8 +69,21 @@ class DuaController extends Controller
             $data['user_id'] = Auth::id();
             // Admin can set public true; for now allow is_public as provided
         } else {
-            // Not authenticated: mark as private to the creator, but since no user_id, keep is_public false and reject create? For now accept but is_public=false
+            // Not authenticated: mark as private
             $data['is_public'] = false;
+        }
+
+        // Ensure non-admin users cannot publish duas for everyone.
+        if (Auth::check() && empty(Auth::user()->is_admin)) {
+            // Force is_public=false for regular users regardless of submitted value
+            $data['is_public'] = false;
+        }
+
+        // Normalize category before saving to avoid accidental mismatches (trim whitespace)
+        if (empty($data['category'])) {
+            $data['category'] = 'General';
+        } else {
+            $data['category'] = trim($data['category']);
         }
 
         $dua = Dua::create($data);
@@ -79,8 +94,8 @@ class DuaController extends Controller
     // Update dua
     public function update(Request $request, Dua $dua)
     {
-        // Only owner or admin (future) can update
-        if (!Auth::check() || (Auth::id() !== $dua->user_id)) {
+        // Only owner or admin can update
+        if (!(Auth::check() && (Auth::id() === $dua->user_id || Auth::user()->is_admin))) {
             return response()->json(['success' => false, 'message' => 'Unauthorized'], 401);
         }
 
@@ -100,7 +115,8 @@ class DuaController extends Controller
     // Delete dua
     public function destroy(Dua $dua)
     {
-        if (!Auth::check() || (Auth::id() !== $dua->user_id)) {
+        // Allow owner or admin to delete
+        if (!(Auth::check() && (Auth::id() === $dua->user_id || Auth::user()->is_admin))) {
             return response()->json(['success' => false, 'message' => 'Unauthorized'], 401);
         }
 

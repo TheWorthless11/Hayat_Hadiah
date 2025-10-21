@@ -9,9 +9,9 @@
 @section('content')
     <div class="container">
         <!-- Theme Toggle Button (Top Right) -->
-        <button onclick="toggleTheme()" class="theme-btn-floating">
+        <!-- <button onclick="toggleTheme()" class="theme-btn-floating">
             <span id="themeIcon">🌙</span>
-        </button>
+        </button> -->
 
         <!-- TOP SECTION: 2 Columns -->
         <div class="top-section">
@@ -139,30 +139,11 @@
     
 
     <script>
-        // Theme Toggle Functionality
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            if (newTheme === 'dark') {
-                html.classList.add('dark');
-                document.getElementById('themeIcon').textContent = '☀️';
-            } else {
-                html.classList.remove('dark');
-                document.getElementById('themeIcon').textContent = '🌙';
-            }
-            
-            localStorage.setItem('theme', newTheme);
-        }
+        
 
         // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.getElementById('themeIcon').textContent = '☀️';
-            }
+            
 
             // Highlight current prayer
             highlightCurrentPrayer();

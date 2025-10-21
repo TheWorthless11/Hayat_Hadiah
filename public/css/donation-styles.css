@@ -12,8 +12,8 @@
     text-align: center;
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     border-radius: 12px;
 }
 
@@ -32,8 +32,8 @@
 
 /* Quran Verse Box */
 .verse-box {
-    background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
-    border: 2px solid rgba(20, 184, 166, 0.3);
+    background: #fffaf0;
+    border: 2px solid rgba(160, 128, 96, 0.12);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -58,7 +58,7 @@
 .verse-reference {
     display: block;
     font-size: 0.85rem;
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
     margin-top: 0.5rem;
     font-weight: 600;
 }
@@ -99,13 +99,13 @@
 
 .goal-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(20, 184, 166, 0.15);
-    border-color: #14b8a6;
+    box-shadow: 0 6px 16px rgba(160, 128, 96, 0.08);
+    border-color: hsl(30, 30%, 35%);
 }
 
 .goal-card.goal-reached {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
-    border-color: #10b981;
+    background: #fffaf0;
+    border-color: hsl(30, 25%, 75%);
 }
 
 .goal-header {
@@ -133,8 +133,8 @@
 }
 
 .goal-badge.reached {
-    background: #d1fae5;
-    color: #065f46;
+    background: #fffaf0;
+    color: hsl(30, 30%, 35%);
 }
 
 .goal-description {
@@ -159,7 +159,7 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #14b8a6 0%, #10b981 100%);
+    background: hsl(30, 35%, 75%);
     border-radius: 10px;
     transition: width 0.5s ease;
     position: relative;
@@ -219,7 +219,7 @@
 
 .stat-value {
     font-size: 1rem;
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
     font-weight: 700;
 }
 
@@ -268,7 +268,7 @@
 
 .form-section h3 {
     font-size: 1.1rem;
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -305,8 +305,8 @@
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #14b8a6;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+    border-color: hsl(30, 25%, 75%);
+    box-shadow: 0 0 0 3px rgba(160, 128, 96, 0.10);
 }
 
 .form-group small {
@@ -317,7 +317,7 @@
 }
 
 .form-group small a {
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
     text-decoration: none;
     font-weight: 600;
 }
@@ -352,8 +352,8 @@
     font-size: 0.875rem;
     font-weight: 600;
     background: white;
-    color: #14b8a6;
-    border: 2px solid #14b8a6;
+    color: hsl(30, 30%, 35%);
+    border: 2px solid hsl(30, 30%, 35%);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
@@ -361,9 +361,8 @@
 
 .amount-btn:hover,
 .amount-btn.active {
-    background: #14b8a6;
+    background: hsl(30, 30%, 35%);
     color: white;
-    transform: translateY(-2px);
 }
 
 @media (max-width: 640px) {
@@ -397,8 +396,8 @@
 }
 
 .payment-option input[type="radio"]:checked + .payment-card {
-    border-color: #14b8a6;
-    background: rgba(20, 184, 166, 0.05);
+    border-color: hsl(30, 30%, 35%);
+    background: rgba(160, 128, 96, 0.05);
 }
 
 .payment-logo {
@@ -444,18 +443,18 @@
     padding: 0.9rem 2.5rem;
     font-size: 1rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+    box-shadow: 0 4px 12px rgba(160, 128, 96, 0.12);
 }
 
 .btn-donate:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4);
+    box-shadow: 0 6px 16px rgba(160, 128, 96, 0.16);
 }
 
 .btn-donate:disabled {
@@ -536,7 +535,7 @@
 
 .transaction-details h3 {
     font-size: 1rem;
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -564,14 +563,14 @@
 }
 
 .amount-highlight {
-    color: #10b981;
+    color: hsl(30, 30%, 35%);
     font-size: 1.1rem;
 }
 
 /* Dua Box */
 .dua-box {
-    background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
-    border: 2px solid rgba(20, 184, 166, 0.3);
+    background: #fffaf0;
+    border: 2px solid rgba(160, 128, 96, 0.12);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -591,7 +590,7 @@
 
 .dua-arabic {
     font-size: 1.3rem;
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
     margin: 0.75rem 0;
     font-weight: 600;
 }
@@ -640,19 +639,19 @@
 }
 
 .btn-primary {
-    background: #14b8a6;
+    background: hsl(30, 30%, 35%);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #0d9488;
+    background: hsl(30, 25%, 30%);
     transform: translateY(-2px);
 }
 
 .btn-secondary {
     background: white;
-    color: #14b8a6;
-    border: 2px solid #14b8a6;
+    color: hsl(30, 30%, 35%);
+    border: 2px solid hsl(30, 30%, 35%);
 }
 
 .btn-secondary:hover {
@@ -671,7 +670,7 @@
 .quote-footer cite {
     display: block;
     margin-top: 0.5rem;
-    color: #14b8a6;
+    color: hsl(30, 30%, 35%);
 }
 
 /* Admin Dashboard */
@@ -697,7 +696,7 @@
     padding: 0.7rem 1.5rem;
     font-size: 0.875rem;
     font-weight: 600;
-    background: #14b8a6;
+    background: hsl(30, 30%, 35%);
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -705,7 +704,7 @@
 }
 
 .btn-export:hover {
-    background: #0d9488;
+    background: hsl(30, 25%, 30%);
     transform: translateY(-2px);
 }
 
@@ -829,12 +828,12 @@
 }
 
 .btn-filter {
-    background: #14b8a6;
+    background: hsl(30, 30%, 35%);
     color: white;
 }
 
 .btn-filter:hover {
-    background: #0d9488;
+    background: hsl(30, 25%, 30%);
 }
 
 .btn-reset {

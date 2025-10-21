@@ -13,8 +13,8 @@
                 <p class="greeting-subtitle">Peace, mercy, and blessings of Allah be upon you</p>
             </div>
 
-            <div class="hero-grid">
-                <!-- Prayer Time Countdown -->
+            <!-- <div class="hero-grid">
+                
                 <div class="hero-card prayer-card">
                     <div class="card-icon">⏰</div>
                     <h2>Next Prayer</h2>
@@ -26,27 +26,27 @@
                     <a href="/prayers" class="card-link">View all prayer times →</a>
                 </div>
 
-                <!-- Islamic Calendar -->
+                
                 <div class="hero-card calendar-card">
                     <div class="card-icon">📅</div>
                     <h2>Today's Date</h2>
                     <div class="hijri-date">{{ $hijriDate }}</div>
                     <div class="gregorian-date">{{ $gregorianDate }}</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
     <!-- Daily Highlights Section -->
     <div class="highlights-section">
         <div class="container">
-            <h2 class="section-title">✨ Daily Spiritual Nourishment</h2>
+            <h4 class="section-title">Daily Spiritual Nourishment</h4>
 
             <!-- Verse of the Day -->
             @if($verseOfDay)
             <div class="highlight-card verse-card">
                 <div class="highlight-header">
-                    <div class="highlight-icon">📖</div>
+                    <div class="highlight-icon"></div>
                     <div>
                         <h3>Verse of the Day</h3>
                         <p class="highlight-meta">Surah {{ $verseOfDay->surah_number }}, Ayah {{ $verseOfDay->verse_number }}</p>
@@ -67,7 +67,7 @@
             @if($hadithOfDay)
             <div class="highlight-card hadith-card">
                 <div class="highlight-header">
-                    <div class="highlight-icon">📚</div>
+                    <div class="highlight-icon"></div>
                     <div>
                         <h3>Hadith of the Day</h3>
                         <p class="highlight-meta">{{ $hadithOfDay->collection }} - Book {{ $hadithOfDay->book_number }}</p>
@@ -85,7 +85,7 @@
 
             <!-- Quick Inspiration Banner -->
             <div class="inspiration-banner">
-                <div class="inspiration-icon">🌟</div>
+                <div class="inspiration-icon"></div>
                 <div class="inspiration-content">
                     <h3>Continue Your Journey</h3>
                     <p>Explore more teachings from the Quran and Hadith, calculate your Zakat, find the Qibla direction, or plan your fasting schedule.</p>
