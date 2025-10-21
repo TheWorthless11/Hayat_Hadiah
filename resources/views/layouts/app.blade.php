@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Base CSS (shared) -->
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <!-- Chatbot Widget CSS -->
+    <link rel="stylesheet" href="{{ asset('css/chatbot-widget.css') }}">
     <!-- Per-page styles -->
     @stack('styles')
 </head>
@@ -25,7 +27,9 @@
                 <a href="/fasting">Fasting</a>
                 <a href="/mosques">Nearby Mosque</a>
                 <a href="/duas">Duas</a>
+                <a href="/donations">Donations</a>
                 <a href="/zakat">Zakat</a>
+                <a href="/chatbot">AI Chat</a>
             </div>
         </div>
     </nav>
@@ -35,9 +39,15 @@
         <span id="themeIcon">🌙</span>
     </button>
 
+
     <main>
         @yield('content')
     </main>
+
+    <!-- Copyright Footer (Common) -->
+    <footer class="footer">
+        <p>&copy; <span class="copyright-year">2025</span> <span class="developer-name">Code by Mahhia</span>. All rights reserved.</p>
+    </footer>
 
     <!-- Theme Toggle Script (Shared across all pages) -->
     <script>
@@ -66,5 +76,11 @@
             }
         });
     </script>
+
+    <!-- Chatbot Widget JS -->
+    <script src="{{ asset('js/chatbot-widget.js') }}"></script>
+    
+    <!-- Per-page scripts -->
+    @stack('scripts')
 </body>
 </html>

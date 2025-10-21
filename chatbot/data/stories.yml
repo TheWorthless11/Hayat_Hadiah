@@ -1,0 +1,176 @@
+version: "3.1"
+
+stories:
+  - story: greet and ask prayer times
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_prayer_times
+      - action: action_get_prayer_times
+
+  - story: greet and ask specific prayer
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_specific_prayer
+      - action: action_get_specific_prayer
+
+  - story: ask qibla direction
+    steps:
+      - intent: ask_qibla_direction
+      - action: action_get_qibla_direction
+
+  - story: ask for quran verse on topic
+    steps:
+      - intent: ask_quran_verse
+      - action: action_get_quran_verse_by_topic
+
+  - story: ask for random quran verse
+    steps:
+      - intent: ask_random_quran
+      - action: action_get_random_quran_verse
+
+  - story: ask for hadith
+    steps:
+      - intent: ask_hadith
+      - action: action_get_hadith_by_topic
+
+  - story: ask for random hadith
+    steps:
+      - intent: ask_random_hadith
+      - action: action_get_random_hadith
+
+  - story: view duas
+    steps:
+      - intent: ask_duas
+      - action: action_get_duas
+
+  - story: view specific dua category
+    steps:
+      - intent: ask_specific_dua
+      - action: action_get_specific_dua
+
+  - story: ask zakat information
+    steps:
+      - intent: ask_zakat_info
+      - action: action_get_zakat_info
+
+  - story: calculate zakat
+    steps:
+      - intent: calculate_zakat
+      - action: action_calculate_zakat
+
+  - story: donation information
+    steps:
+      - intent: ask_donation_info
+      - action: action_get_donation_info
+
+  - story: make a donation
+    steps:
+      - intent: want_to_donate
+      - action: action_initiate_donation
+
+  - story: find nearby mosque
+    steps:
+      - intent: find_mosque
+      - action: action_find_mosques
+
+  - story: ask fasting times
+    steps:
+      - intent: ask_fasting_times
+      - action: action_get_fasting_times
+
+  - story: ask ramadan info
+    steps:
+      - intent: ask_ramadan_info
+      - action: action_get_ramadan_info
+
+  - story: ask about features
+    steps:
+      - intent: ask_features
+      - action: utter_features
+
+  - story: ask for help
+    steps:
+      - intent: ask_help
+      - action: utter_help
+
+  - story: bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - story: thank and goodbye
+    steps:
+      - intent: thank
+      - action: utter_welcome
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: complete donation flow
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: want_to_donate
+      - action: action_initiate_donation
+      - intent: thank
+      - action: utter_welcome
+
+  - story: prayer and quran combo
+    steps:
+      - intent: ask_prayer_times
+      - action: action_get_prayer_times
+      - intent: ask_random_quran
+      - action: action_get_random_quran_verse
+      - intent: thank
+      - action: utter_welcome
+
+  - story: mosque and prayer times
+    steps:
+      - intent: find_mosque
+      - action: action_find_mosques
+      - intent: ask_prayer_times
+      - action: action_get_prayer_times
+
+  - story: fasting and dua
+    steps:
+      - intent: ask_fasting_times
+      - action: action_get_fasting_times
+      - intent: ask_specific_dua
+      - action: action_get_specific_dua
+
+  - story: zakat then donate
+    steps:
+      - intent: calculate_zakat
+      - action: action_calculate_zakat
+      - intent: want_to_donate
+      - action: action_initiate_donation
+
+  - story: ask about hayat hadiah
+    steps:
+      - intent: ask_about_hayat_hadiah
+      - action: utter_about_hayat_hadiah
+
+  - story: ask about hayat hadiah features
+    steps:
+      - intent: ask_project_features
+      - action: utter_project_features
+
+  - story: greet and ask about project
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_about_hayat_hadiah
+      - action: utter_about_hayat_hadiah
+
+  - story: ask what can you do
+    steps:
+      - intent: ask_what_can_you_do
+      - action: utter_what_can_i_do
+
+  - story: ask about features then explore
+    steps:
+      - intent: ask_project_features
+      - action: utter_project_features
+      - intent: ask_prayer_times
+      - action: action_get_prayer_times

@@ -14,10 +14,13 @@ class Dua extends Model
     protected $fillable = [
         'title',
         'category',
+        'subsection',
         'arabic_text',
         'transliteration',
         'translation',
         'tags',
+        'user_id',
+        'is_public',
     ];
 
     protected $casts = [

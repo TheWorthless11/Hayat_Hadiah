@@ -1,0 +1,284 @@
+/* Floating Chat Bubble Widget */
+#floatingChatWidget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.chat-bubble-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0f9b8e 0%, #0c7a6e 100%);
+    border: none;
+    box-shadow: 0 4px 12px rgba(15, 155, 142, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.chat-bubble-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(15, 155, 142, 0.6);
+}
+
+.chat-bubble-btn.active {
+    transform: rotate(90deg);
+}
+
+.unread-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.unread-badge.show {
+    display: flex;
+}
+
+.floating-chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 380px;
+    height: 550px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+.floating-chat-window.open {
+    display: flex;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating-chat-header {
+    background: linear-gradient(135deg, #0f9b8e 0%, #0c7a6e 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floating-chat-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.floating-chat-header p {
+    margin: 3px 0 0 0;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.chat-minimize-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.chat-minimize-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.floating-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background: #f8fafc;
+}
+
+.floating-chat-input-container {
+    padding: 12px 15px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+}
+
+.floating-chat-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.floating-chat-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+.floating-chat-input:focus {
+    border-color: #0f9b8e;
+}
+
+.floating-send-btn {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #0f9b8e 0%, #0c7a6e 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Message styles for floating widget */
+.floating-chat-messages .message {
+    display: flex;
+    margin-bottom: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+.floating-chat-messages .message.user {
+    justify-content: flex-end;
+}
+
+.floating-chat-messages .message-content {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.floating-chat-messages .message.user .message-content {
+    background: linear-gradient(135deg, #0f9b8e 0%, #0c7a6e 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.floating-chat-messages .message.bot .message-content {
+    background: white;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 4px;
+}
+
+.floating-typing-indicator {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 14px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    max-width: 60px;
+}
+
+.floating-typing-indicator.active {
+    display: flex;
+}
+
+.floating-welcome {
+    text-align: center;
+    padding: 30px 20px;
+    color: #64748b;
+}
+
+.floating-welcome h5 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #0f9b8e;
+}
+
+.floating-welcome p {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.floating-quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.floating-action-btn {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.floating-action-btn:hover {
+    border-color: #0f9b8e;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(15, 155, 142, 0.2);
+}
+
+.floating-action-icon {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .floating-chat-window {
+        width: calc(100% - 20px);
+        height: calc(100% - 110px);
+        bottom: 70px;
+        right: 10px;
+    }
+    
+    #floatingChatWidget {
+        bottom: 10px;
+        right: 10px;
+    }
+}

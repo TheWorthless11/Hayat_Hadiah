@@ -1,0 +1,238 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - thank
+  - ask_prayer_times
+  - ask_specific_prayer
+  - ask_qibla_direction
+  - ask_quran_verse
+  - ask_random_quran
+  - ask_hadith
+  - ask_random_hadith
+  - ask_duas
+  - ask_specific_dua
+  - ask_zakat_info
+  - calculate_zakat
+  - ask_donation_info
+  - want_to_donate
+  - find_mosque
+  - ask_fasting_times
+  - ask_ramadan_info
+  - ask_features
+  - ask_help
+  - bot_challenge
+  - ask_about_hayat_hadiah
+  - ask_project_features
+  - ask_what_can_you_do
+
+entities:
+  - prayer_name
+  - location
+  - quran_topic
+  - hadith_topic
+  - dua_category
+  - donation_category
+  - zakat_asset_type
+
+slots:
+  user_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: location
+  
+  prayer_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: prayer_name
+  
+  donation_category:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: donation_category
+  
+  user_name:
+    type: text
+    mappings:
+      - type: custom
+  
+  is_authenticated:
+    type: bool
+    mappings:
+      - type: custom
+
+responses:
+  utter_greet:
+    - text: "Assalamu Alaikum! 🌙 I'm Hayat Hadiah Assistant. How can I help you today?"
+    - text: "Wa Alaikum Assalam! 🕌 Welcome to Hayat Hadiah. What would you like to know?"
+    - text: "As-salamu alaykum wa rahmatullahi wa barakatuh! ✨ I'm here to assist you."
+
+  utter_greet_authenticated:
+    - text: "Assalamu Alaikum, {user_name}! 🌙 How can I help you today?"
+    - text: "Welcome back, {user_name}! 🕌 What can I do for you?"
+
+  utter_welcome:
+    - text: "Welcome to Hayat Hadiah! 🌙 Your Islamic lifestyle companion. How can I assist you today?"
+    - text: "Assalamu Alaikum! Welcome to Hayat Hadiah. I'm here to help with prayers, Quran, donations, and more!"
+
+  utter_features:
+    - text: |
+        I can help you with:
+        
+        🕌 Prayer Times & Qibla Direction
+        📖 Quran Verses & Hadith
+        🤲 Islamic Duas
+        💰 Zakat Calculation
+        💸 Donations
+        🕋 Mosque Finder
+        🌙 Fasting Times
+        
+        What would you like to know?
+
+  utter_goodbye:
+    - text: "Wa Alaikum Assalam! 🌙 May Allah bless you. Feel free to return anytime!"
+    - text: "Goodbye! 💚 JazakAllah Khair for using Hayat Hadiah."
+    - text: "Ma'a Salama! ✨ Have a blessed day!"
+
+  utter_thank:
+    - text: "You're welcome! 🤲 Alhamdulillah, I'm here to help."
+    - text: "JazakAllah Khair! 💚 Happy to assist you."
+    - text: "It's my pleasure! 🌟 Let me know if you need anything else."
+
+  utter_ask_features:
+    - text: |
+        I can help you with:
+        
+        🕌 Prayer Times - Get today's prayer schedule
+        🧭 Qibla Direction - Find Qibla from your location
+        📖 Quran - Search verses or get random ayat
+        📜 Hadith - Browse authentic hadith collections
+        🤲 Duas - Morning, evening, and special duas
+        💰 Zakat - Calculate and understand Zakat
+        💸 Donations - Support Islamic causes
+        🕋 Mosque Finder - Find nearby mosques
+        🌙 Fasting Times - Ramadan schedule
+        
+        What would you like to explore?
+
+  utter_help:
+    - text: |
+        Here are some things you can ask me:
+        
+        "When is Fajr prayer?"
+        "Show me a verse about patience"
+        "Find mosques near me"
+        "I want to donate"
+        "What is Zakat?"
+        "Show me morning duas"
+        
+        Just ask naturally, and I'll do my best to help! 😊
+
+  utter_default:
+    - text: "I'm not sure I understood that. Could you rephrase? Or type 'help' to see what I can do."
+    - text: "Hmm, I didn't quite catch that. Try asking about prayer times, Quran, or donations!"
+
+  utter_iamabot:
+    - text: "I am an AI assistant for Hayat Hadiah, powered by Rasa. 🤖"
+
+  utter_about_hayat_hadiah:
+    - text: |
+        🌙 **Hayat Hadiah** - Your Complete Islamic Lifestyle Companion
+        
+        Hayat Hadiah (meaning "Gift of Life") is a comprehensive web application designed to support Muslims in their daily religious practices and spiritual journey.
+        
+        **Our Mission:**
+        To make Islamic knowledge and practices easily accessible to everyone, helping Muslims strengthen their faith and live according to Islamic principles.
+        
+        **What Makes Us Special:**
+        ✨ All-in-one Islamic platform
+        🤲 User-friendly interface
+        🌍 Accessible worldwide
+        💚 Built with love for the Muslim community
+        
+        Ask me "what features do you have?" to learn more!
+
+  utter_project_features:
+    - text: |
+        🌟 **Hayat Hadiah Features:**
+        
+        **Worship & Practice:**
+        🕌 Prayer Times - Accurate prayer schedules for your location
+        🧭 Qibla Finder - Find the direction to Mecca from anywhere
+        🌙 Ramadan & Fasting - Complete fasting schedules and times
+        
+        **Islamic Knowledge:**
+        📖 Quran - Browse, search, and read Quranic verses
+        📜 Hadith - Access authentic hadith collections
+        🤲 Duas - Morning, evening, and special supplications
+        
+        **Community & Giving:**
+        💰 Zakat Calculator - Calculate your obligatory charity
+        💸 Donations - Support Islamic causes (bKash/Nagad)
+        🕋 Mosque Finder - Locate nearby mosques
+        
+        **Technology:**
+        🤖 AI Chatbot - 24/7 Islamic assistant (that's me!)
+        📱 Responsive Design - Works on all devices
+        
+        What would you like to explore?
+
+  utter_what_can_i_do:
+    - text: |
+        I'm your Islamic lifestyle assistant! Here's what I can do:
+        
+        **Prayer Support:**
+        ⏰ Show today's prayer times
+        🕌 Find specific prayer times (Fajr, Dhuhr, etc.)
+        🧭 Give you Qibla direction
+        
+        **Islamic Content:**
+        📖 Share Quran verses on any topic
+        📜 Show authentic Hadith
+        🤲 Provide daily Duas
+        
+        **Practical Help:**
+        💰 Explain Zakat and help calculate it
+        💸 Guide you through donations
+        🕋 Find mosques near you
+        🌙 Show Ramadan/fasting schedules
+        
+        **Information:**
+        ℹ️ Tell you about Hayat Hadiah
+        ❓ Answer Islamic questions
+        
+        Just ask me anything! Try: "What are prayer times?" or "Show me a Quran verse"
+
+actions:
+  - action_get_prayer_times
+  - action_get_specific_prayer
+  - action_get_qibla_direction
+  - action_get_quran_verse
+  - action_get_quran_verse_by_topic
+  - action_get_random_quran
+  - action_get_random_quran_verse
+  - action_get_hadith
+  - action_get_hadith_by_topic
+  - action_get_random_hadith
+  - action_get_duas
+  - action_get_specific_dua
+  - action_get_zakat_info
+  - action_calculate_zakat
+  - action_get_donation_info
+  - action_initiate_donation
+  - action_create_donation_link
+  - action_find_mosque
+  - action_find_mosques
+  - action_get_fasting_times
+  - action_get_ramadan_info
+  - action_check_authentication
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

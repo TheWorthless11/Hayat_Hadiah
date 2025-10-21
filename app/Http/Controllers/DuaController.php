@@ -11,37 +11,43 @@ class DuaController extends Controller
     // List duas by category/subsection, with search
     public function index(Request $request)
     {
-        $category = $request->query('category', 'General');
-        $subsection = $request->query('subsection', null);
-        $q = $request->query('q', null);
+        // If it has query params (AJAX request), return JSON
+        if ($request->has('category') || $request->wantsJson() || $request->ajax()) {
+            $category = $request->query('category', 'General');
+            $subsection = $request->query('subsection', null);
+            $q = $request->query('q', null);
 
-        $query = Dua::query()->where('category', $category);
+            $query = Dua::query()->where('category', $category);
 
-        if ($subsection) {
-            $query->where('subsection', $subsection);
+            if ($subsection) {
+                $query->where('subsection', $subsection);
+            }
+
+            // Only show public duas or user's own
+            if (Auth::check()) {
+                $query->where(function($q2) {
+                    $q2->where('is_public', true)->orWhere('user_id', Auth::id());
+                });
+            } else {
+                $query->where('is_public', true);
+            }
+
+            if ($q) {
+                $query->where(function($s) use ($q) {
+                    $s->where('title', 'like', "%{$q}%")
+                      ->orWhere('arabic_text', 'like', "%{$q}%")
+                      ->orWhere('transliteration', 'like', "%{$q}%")
+                      ->orWhere('translation', 'like', "%{$q}%");
+                });
+            }
+
+            $duas = $query->orderBy('created_at', 'desc')->paginate(20);
+
+            return response()->json(['success' => true, 'duas' => $duas]);
         }
 
-        // Only show public duas or user's own
-        if (Auth::check()) {
-            $query->where(function($q2) {
-                $q2->where('is_public', true)->orWhere('user_id', Auth::id());
-            });
-        } else {
-            $query->where('is_public', true);
-        }
-
-        if ($q) {
-            $query->where(function($s) use ($q) {
-                $s->where('title', 'like', "%{$q}%")
-                  ->orWhere('arabic_text', 'like', "%{$q}%")
-                  ->orWhere('transliteration', 'like', "%{$q}%")
-                  ->orWhere('translation', 'like', "%{$q}%");
-            });
-        }
-
-        $duas = $query->orderBy('created_at', 'desc')->paginate(20);
-
-        return response()->json(['success' => true, 'duas' => $duas]);
+        // Regular page visit - return Blade view
+        return view('dua.index');
     }
 
     // Store a new dua

@@ -1,0 +1,393 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - hello
+      - hey
+      - good morning
+      - good evening
+      - assalamu alaikum
+      - salam
+      - as-salamu alaykum
+      - wa alaikum assalam
+      - peace be upon you
+      - greetings
+      - howdy
+      - hey there
+      - hi there
+      - hello there
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you
+      - see you later
+      - talk to you later
+      - gotta go
+      - have a nice day
+      - take care
+      - catch you later
+      - ma'a salama
+      - allah hafiz
+      - khuda hafiz
+      - until next time
+      - farewell
+
+  - intent: affirm
+    examples: |
+      - yes
+      - yeah
+      - yep
+      - sure
+      - of course
+      - that sounds good
+      - correct
+      - yes please
+      - absolutely
+      - definitely
+      - okay
+      - ok
+      - alright
+      - sounds good
+      - yes I do
+
+  - intent: deny
+    examples: |
+      - no
+      - nope
+      - no thanks
+      - no thank you
+      - not really
+      - I don't think so
+      - don't want that
+      - no way
+      - not interested
+      - nah
+      - negative
+      - I decline
+      - not now
+      - maybe later
+
+  - intent: thank
+    examples: |
+      - thanks
+      - thank you
+      - thank you so much
+      - thanks a lot
+      - jazakallah
+      - jazakallah khair
+      - may allah reward you
+      - barakallah feek
+      - appreciate it
+      - thanks for your help
+      - thank you for helping
+      - that's helpful
+      - much appreciated
+
+  - intent: ask_prayer_times
+    examples: |
+      - what are the prayer times
+      - when is prayer today
+      - show me prayer times
+      - prayer schedule
+      - today's prayer times
+      - what time is salah
+      - salah times
+      - namaz times
+      - when do I need to pray
+      - prayer timings
+      - show prayer schedule
+      - what are today's prayer times
+      - give me prayer times
+      - when is namaz
+      - salat times today
+      - what time should I pray
+
+  - intent: ask_specific_prayer
+    examples: |
+      - when is [fajr](prayer_name)
+      - what time is [dhuhr](prayer_name)
+      - when is [asr](prayer_name) prayer
+      - [maghrib](prayer_name) time
+      - when is [isha](prayer_name)
+      - what time is [fajr](prayer_name) today
+      - tell me [asr](prayer_name) time
+      - when should I pray [dhuhr](prayer_name)
+      - [maghrib](prayer_name) prayer time
+      - time for [isha](prayer_name)
+      - when is [zuhr](prayer_name)
+      - [fajr](prayer_name) timing
+      - what time is [maghrib](prayer_name) prayer
+
+  - intent: ask_qibla_direction
+    examples: |
+      - which direction is qibla
+      - where is qibla
+      - show me qibla direction
+      - qibla compass
+      - which way is mecca
+      - direction to kaaba
+      - where should I face for prayer
+      - qibla direction from here
+      - find qibla
+      - where is the qibla
+      - which way is the qibla
+      - show qibla
+      - I need qibla direction
+      - kaaba direction
+      - mecca direction
+
+  - intent: ask_quran_verse
+    examples: |
+      - show me a verse about [patience](quran_topic)
+      - quran verse about [charity](quran_topic)
+      - ayat about [prayer](quran_topic)
+      - verse about [forgiveness](quran_topic)
+      - show verse about [mercy](quran_topic)
+      - I want a verse about [faith](quran_topic)
+      - quran says about [kindness](quran_topic)
+      - verse on [gratitude](quran_topic)
+      - ayat on [hope](quran_topic)
+      - what does quran say about [trust](quran_topic)
+      - verse regarding [peace](quran_topic)
+      - show me ayat about [love](quran_topic)
+
+  - intent: ask_random_quran
+    examples: |
+      - show me a quran verse
+      - random quran verse
+      - give me an ayat
+      - share a verse
+      - show random ayat
+      - verse of the day
+      - any quran verse
+      - surprise me with a verse
+      - random verse
+      - read me a verse
+      - show me from quran
+      - any ayat
+      - give me inspiration from quran
+
+  - intent: ask_hadith
+    examples: |
+      - show me a hadith
+      - hadith about [charity](hadith_topic)
+      - prophet said about [prayer](hadith_topic)
+      - show hadith on [kindness](hadith_topic)
+      - what did prophet say about [forgiveness](hadith_topic)
+      - hadith regarding [patience](hadith_topic)
+      - tell me hadith about [fasting](hadith_topic)
+      - prophet's saying on [manners](hadith_topic)
+      - hadith on [honesty](hadith_topic)
+      - what prophet said about [family](hadith_topic)
+
+  - intent: ask_random_hadith
+    examples: |
+      - random hadith
+      - hadith of the day
+      - share a hadith
+      - tell me a hadith
+      - give me a hadith
+      - any hadith
+      - surprise me with hadith
+      - read hadith
+      - show hadith
+      - give me prophet's saying
+
+  - intent: ask_duas
+    examples: |
+      - show me duas
+      - I want to see duas
+      - morning duas
+      - what duas should I read
+      - dua list
+      - show all duas
+      - prayers and duas
+      - islamic duas
+      - daily duas
+      - give me duas
+
+  - intent: ask_specific_dua
+    examples: |
+      - show [morning](dua_category) dua
+      - [evening](dua_category) duas
+      - dua for [sleep](dua_category)
+      - [travel](dua_category) dua
+      - dua before [meal](dua_category)
+      - [ramadan](dua_category) duas
+      - show [iftar](dua_category) dua
+      - dua for [laylatul qadr](dua_category)
+
+  - intent: ask_zakat_info
+    examples: |
+      - what is zakat
+      - tell me about zakat
+      - zakat information
+      - how does zakat work
+      - explain zakat
+      - zakat rules
+      - who should pay zakat
+      - when to pay zakat
+      - zakat percentage
+      - how much is zakat
+      - zakat calculation method
+
+  - intent: calculate_zakat
+    examples: |
+      - calculate my zakat
+      - I want to calculate zakat
+      - help me calculate zakat
+      - zakat calculator
+      - how much zakat should I pay
+      - compute my zakat
+      - calculate zakat on my wealth
+
+  - intent: ask_donation_info
+    examples: |
+      - how can I donate
+      - donation information
+      - what causes can I donate to
+      - tell me about donations
+      - donation categories
+      - where does my donation go
+      - donation goals
+      - how to contribute
+
+  - intent: want_to_donate
+    examples: |
+      - I want to donate
+      - make a donation
+      - donate now
+      - I'd like to contribute
+      - donate for [orphans](donation_category)
+      - support [mosque](donation_category)
+      - donate to [education](donation_category)
+      - contribute to [medical aid](donation_category)
+      - give [sadaqah](donation_category)
+      - pay [zakat](donation_category)
+
+  - intent: find_mosque
+    examples: |
+      - find mosque near me
+      - where is the nearest mosque
+      - mosques nearby
+      - show me mosques
+      - locate mosque
+      - masjid near me
+      - find masjid
+      - nearest prayer place
+      - where can I pray
+      - mosque finder
+      - show nearby mosques
+
+  - intent: ask_fasting_times
+    examples: |
+      - when is iftar
+      - what time is suhoor
+      - fasting times today
+      - when to break fast
+      - sehri time
+      - iftar time today
+      - fasting schedule
+      - ramadan timings
+      - when does fast end
+      - when to start fast
+
+  - intent: ask_ramadan_info
+    examples: |
+      - when is ramadan
+      - ramadan dates
+      - when does ramadan start
+      - next ramadan
+      - ramadan calendar
+      - tell me about ramadan
+
+  - intent: ask_features
+    examples: |
+      - what can you do
+      - your features
+      - what are your capabilities
+      - how can you help me
+      - what do you offer
+      - show me features
+      - list features
+      - what services do you provide
+      - tell me what you can do
+
+  - intent: ask_help
+    examples: |
+      - help
+      - I need help
+      - how does this work
+      - guide me
+      - I don't understand
+      - what should I ask
+      - help me
+      - assist me
+      - I'm lost
+      - instructions
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot
+      - are you human
+      - am I talking to a bot
+      - are you real
+      - are you a robot
+      - who are you
+
+  - intent: ask_about_hayat_hadiah
+    examples: |
+      - what is hayat hadiah
+      - tell me about hayat hadiah
+      - what is this website
+      - what is this app
+      - about hayat hadiah
+      - hayat hadiah information
+      - what's hayat hadiah
+      - tell me about this platform
+      - what is this project
+      - explain hayat hadiah
+      - hayat hadiah details
+      - what does hayat hadiah mean
+      - what is the purpose of hayat hadiah
+      - why hayat hadiah
+      - mission of hayat hadiah
+
+  - intent: ask_project_features
+    examples: |
+      - what features does hayat hadiah have
+      - hayat hadiah features
+      - what can I do on hayat hadiah
+      - show me all features
+      - what services does hayat hadiah offer
+      - list all features
+      - what's available on hayat hadiah
+      - tell me about features
+      - what does hayat hadiah provide
+      - hayat hadiah services
+      - what's included
+      - complete feature list
+      - all features of hayat hadiah
+      - what can this website do
+
+  - intent: ask_what_can_you_do
+    examples: |
+      - what can you do
+      - what are you capable of
+      - how can you help
+      - what do you do
+      - your capabilities
+      - tell me what you can do
+      - what's your purpose
+      - how can you assist me
+      - what tasks can you perform
+      - what help can you provide
+      - show me what you can do
+      - list your abilities
+      - what functions do you have
+      - explain your features
+      - what are you

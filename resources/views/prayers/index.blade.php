@@ -136,10 +136,7 @@
 
     </div>
 
-    <!-- Copyright Footer -->
-    <footer class="footer">
-        <p>&copy; <span class="copyright-year">2025</span> <span class="developer-name">Code by Mahhia</span>. All rights reserved.</p>
-    </footer>
+    
 
     <script>
         // Theme Toggle Functionality

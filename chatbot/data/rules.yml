@@ -1,0 +1,47 @@
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Respond to thanks
+    steps:
+      - intent: thank
+      - action: utter_welcome
+
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Provide help when asked
+    steps:
+      - intent: ask_help
+      - action: utter_help
+
+  - rule: Show features when asked
+    steps:
+      - intent: ask_features
+      - action: utter_features
+
+  - rule: Tell about Hayat Hadiah
+    steps:
+      - intent: ask_about_hayat_hadiah
+      - action: utter_about_hayat_hadiah
+
+  - rule: Show project features
+    steps:
+      - intent: ask_project_features
+      - action: utter_project_features
+
+  - rule: Explain what chatbot can do
+    steps:
+      - intent: ask_what_can_you_do
+      - action: utter_what_can_i_do

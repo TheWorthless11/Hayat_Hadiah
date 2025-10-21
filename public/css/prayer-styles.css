@@ -1,3 +1,23 @@
+/* Custom dropdown (select) styles for light mode */
+body:not(.dark) select,
+body:not(.dark) select:focus {
+    background-color: #FFE1AF;
+    color: #5a3e1b;
+    border: 1.5px solid #a08060;
+    box-shadow: none;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+body:not(.dark) select:hover {
+    border-color: #8b6f47;
+}
+
+body:not(.dark) select:disabled {
+    background-color: #f5e7d0;
+    color: #b8a07a;
+    cursor: not-allowed;
+}
 
 /* pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp */
 /* ========================================
@@ -34,7 +54,7 @@
     font-size: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .info-label {
@@ -45,7 +65,7 @@
 .info-location {
     font-size: 1.25rem;  /* City name size */
     font-weight: bold;
-    color: #053939;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .info-location {
@@ -66,7 +86,7 @@
 .location-search {
     width: 30%;  /* Adjust dropdown width here */
     padding: 0.5rem;
-    border: 2px solid #5eead4;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 1.5rem;
     background-color: white;
     color: #1f2937;
@@ -85,8 +105,8 @@
 .btn-detect {
     width: 25%;  /* Adjust button width here */
     padding: 0.5rem;
-    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);  /* Deep gradient */
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     border: none;
     border-radius: 1.5rem;
     font-size: 0.5rem;
@@ -96,11 +116,11 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Auto-detect button hover - even darker */
+/* Auto-detect button hover */
 .btn-detect:hover {
-    background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);
+    background: hsl(30, 35%, 75%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.5);
+    box-shadow: 0 8px 20px rgba(160, 128, 96, 0.5);
 }
 
 /* ========================================
@@ -110,7 +130,7 @@
 .info-date {
     font-size: 1.25rem;  /* Smaller day name size */
     font-weight: bold;
-    color: #053939;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 0.5rem;
 }
 
@@ -121,7 +141,7 @@
 /* Full date (e.g., "October 16, 2025") */
 .info-date-full {
     font-size: 0.5rem;  /* Smaller date size */
-    color: #0c5d51;
+    color: hsl(30, 30%, 35%);
     margin-bottom: 0rem;
 }
 
@@ -154,7 +174,7 @@
 .setting-group select {
     width: 100%;  /* Takes full width of its container */
     padding: 0.35rem;  /* Smaller padding */
-    border: 2px solid #5eead4;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 1rem;  /* Slightly less rounded */
     background-color: white;
     color: #1f2937;
@@ -188,8 +208,8 @@
 }
 
 .card-header {
-    background: linear-gradient(to right, #14b8a6, #06b6d4);
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     padding: 1rem 1.5rem;
 }
 
@@ -214,7 +234,7 @@ label {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #115e59;
+    color: hsl(30, 30%, 35%);
 }
 
 .dark label {
@@ -224,7 +244,7 @@ label {
 select, input[type="text"] {
     width: 40%;
     padding: 0.75rem;
-    border: 2px solid #5eead4;
+    border: 2px solid hsl(30, 25%, 75%);
     border-radius: 0.5rem;
     background-color: white;
     color: #1f2937;
@@ -234,8 +254,8 @@ select, input[type="text"] {
 
 select:focus, input[type="text"]:focus {
     outline: none;
-    border-color: #14b8a6;
-    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+    border-color: hsl(30, 35%, 65%);
+    box-shadow: 0 0 0 3px rgba(160, 128, 96, 0.2);
 }
 
 .dark select, .dark input[type="text"] {
@@ -263,14 +283,14 @@ select:focus, input[type="text"]:focus {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);
-    color: white;
+    background: #FFE1AF;
+    color: hsl(30, 30%, 35%);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
      /* Adjust this value to change button width */
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #064e3b, #053b2f, #042f24);
+    background: hsl(30, 35%, 75%);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
 }
@@ -291,14 +311,14 @@ select:focus, input[type="text"]:focus {
 
 /* Individual prayer card styling - BASE FOR ALL CARDS */
 .prayer-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75));
+    background: #FFE1AF;
     backdrop-filter: blur(10px);
     border-radius: 0.5rem;
     padding: 0.5rem;
     aspect-ratio: 1 / 1;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* SMOOTH transition */
-    border: 1px solid rgba(20, 184, 166, 0.2);
+    border: 1px solid rgba(160, 128, 96, 0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -339,9 +359,9 @@ select:focus, input[type="text"]:focus {
     transform: scale(1.2);
     z-index: 10;
     opacity: 1;
-    background: linear-gradient(135deg, #0f766e, #065f46, #064e3b);
-    border-color: #064e3b;
-    box-shadow: 0 12px 40px rgba(6, 95, 70, 0.6);
+    background: hsl(30, 40%, 60%);
+    border-color: hsl(30, 35%, 55%);
+    box-shadow: 0 12px 40px rgba(160, 128, 96, 0.6);
 }
 
 /* Text styling for the current card */
@@ -357,7 +377,7 @@ select:focus, input[type="text"]:focus {
     top: 0.4rem;
     right: 0.5rem;
     background: rgba(255, 255, 255, 0.95);
-    color: #064e3b;
+    color:  hsl(30, 30%, 35%);
     padding: 0.2rem 0.5rem;
     border-radius: 0.75rem;
     font-size: 0.55rem;
@@ -402,7 +422,7 @@ select:focus, input[type="text"]:focus {
 .prayer-name {
     font-size: 0.65rem;  /* Smaller prayer name size */
     font-weight: 400;
-    color: #0c5d51;
+    color:  hsl(30, 30%, 35%);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-align: left;  /* Align left */
@@ -417,7 +437,7 @@ select:focus, input[type="text"]:focus {
 .prayer-time {
     font-size: 1.1rem;  /* Smaller time size to fit cards */
     font-weight: bold;
-    color: #053939;
+    color:  hsl(30, 30%, 35%);
     font-family: 'Courier New', monospace;  /* Monospace font for times */
     text-align: left;  /* Align left */
     width: 100%;

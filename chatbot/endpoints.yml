@@ -1,0 +1,12 @@
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+# Uncomment the following lines to use a custom action server
+# action_endpoint:
+#   url: "http://localhost:5055/webhook"
+
+# Uncomment to configure a tracker store
+# tracker_store:
+#   type: sql
+#   dialect: "sqlite"
+#   db: "rasa.db"

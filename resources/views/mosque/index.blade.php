@@ -46,7 +46,7 @@
             </button>
             
             <div id="locationInfo" style="display: none; margin: 0; padding: 0.5rem 1rem; background: rgba(15, 118, 110, 0.1); border-radius: 0.375rem; font-size: 0.85rem; white-space: nowrap;">
-                <strong>📍 Your Location:</strong> 
+                <strong>Your Location:</strong> 
                 <span id="locationText">-</span>
             </div>
         </div>

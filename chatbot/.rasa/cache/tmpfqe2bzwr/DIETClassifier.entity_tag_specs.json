@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-donation_category",
+      "2": "I-donation_category",
+      "3": "L-donation_category",
+      "4": "U-donation_category",
+      "5": "B-dua_category",
+      "6": "I-dua_category",
+      "7": "L-dua_category",
+      "8": "U-dua_category",
+      "9": "B-hadith_topic",
+      "10": "I-hadith_topic",
+      "11": "L-hadith_topic",
+      "12": "U-hadith_topic",
+      "13": "B-prayer_name",
+      "14": "I-prayer_name",
+      "15": "L-prayer_name",
+      "16": "U-prayer_name",
+      "17": "B-quran_topic",
+      "18": "I-quran_topic",
+      "19": "L-quran_topic",
+      "20": "U-quran_topic",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-donation_category": 1,
+      "I-donation_category": 2,
+      "L-donation_category": 3,
+      "U-donation_category": 4,
+      "B-dua_category": 5,
+      "I-dua_category": 6,
+      "L-dua_category": 7,
+      "U-dua_category": 8,
+      "B-hadith_topic": 9,
+      "I-hadith_topic": 10,
+      "L-hadith_topic": 11,
+      "U-hadith_topic": 12,
+      "B-prayer_name": 13,
+      "I-prayer_name": 14,
+      "L-prayer_name": 15,
+      "U-prayer_name": 16,
+      "B-quran_topic": 17,
+      "I-quran_topic": 18,
+      "L-quran_topic": 19,
+      "U-quran_topic": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

@@ -2,18 +2,16 @@
    NEXT PRAYER COUNTDOWN TIMER
    ======================================== */
 
+
+/* Light mode countdown timer container */
 .next-prayer-timer-container {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem 1rem;
-    margin-top: 4rem; /* Increased space from 1.5rem to 4rem */
-    /* The background, shadow, and border have been removed */
-}
+    margin-top: 4rem;
+    border-radius: 1.5rem;
 
-.dark .next-prayer-timer-container {
-    /* background: rgba(32, 91, 173, 0.6);
-    border-color: rgba(255, 255, 255, 0.1); */
 }
 
 .timer-circle-container {
@@ -30,9 +28,11 @@
     overflow: visible;
 }
 
+
+/* Light mode progress background */
 .progress-background {
     fill: none;
-    stroke: rgba(20, 184, 166, 0.1);
+    stroke: rgba(160, 128, 96, 0.13);
     stroke-width: 14;
 }
 
@@ -40,12 +40,14 @@
     stroke: rgba(94, 234, 212, 0.1);
 }
 
+
+/* Light mode progress bar */
 .progress-bar {
     fill: none;
-    stroke: #14b8a6; /* Teal-500 */
+    stroke: #a08060;
     stroke-width: 14;
     stroke-linecap: round;
-    stroke-dasharray: 565; /* Circumference for r=90 */
+    stroke-dasharray: 565;
     stroke-dashoffset: 565;
     transition: stroke-dashoffset 1s linear;
 }
@@ -54,10 +56,12 @@
     stroke: #053939; /* Teal-300 */
 }
 
+
+/* Light mode timer text */
 .timer-text {
     position: absolute;
     text-align: center;
-    color: #064e3b; /* Green-900 - UNIFIED COLOR */
+    color: hsl(30, 30%, 35%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,12 +93,14 @@
     opacity: 0.9;
 }
 
+
+/* Light mode time left */
 .time-left {
     font-size: 1.5rem;
     font-weight: 700;
     margin-top: 8px;
     font-family: 'Roboto Mono', monospace;
-    color: #064e3b; /* Green-900 - UNIFIED COLOR */
+    color: hsl(30, 30%, 35%);
 }
 
 .dark .time-left {
