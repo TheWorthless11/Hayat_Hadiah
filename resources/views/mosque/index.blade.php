@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/mosque-styles.css') }}">
@@ -258,4 +258,4 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 </script>
-@endsection
+</x-app-layout>

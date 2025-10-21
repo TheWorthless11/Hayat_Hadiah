@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/qibla-google-style.css') }}">
@@ -588,4 +588,4 @@
             }
         }
     </script>
-@endsection
+</x-app-layout>

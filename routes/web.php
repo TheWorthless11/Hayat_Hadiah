@@ -9,6 +9,24 @@ use App\Http\Controllers\HadithController;
 use App\Http\Controllers\FastingController;
 use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\MosqueController;
+use App\Http\Controllers\DuaController;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\AdminDonationController;
+use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\ProfileController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// --- PUBLIC MODULE ROUTES ---
 
 // Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -54,31 +72,55 @@ Route::get('/mosques', [MosqueController::class, 'index'])->name('mosques.index'
 Route::post('/mosques/nearby', [MosqueController::class, 'fetchNearby'])->name('mosques.nearby');
 
 // Duas Module
-use App\Http\Controllers\DuaController;
 Route::get('/duas', [DuaController::class, 'index'])->name('duas.index');
 Route::post('/duas', [DuaController::class, 'store'])->name('duas.store');
 Route::put('/duas/{dua}', [DuaController::class, 'update'])->name('duas.update');
 Route::delete('/duas/{dua}', [DuaController::class, 'destroy'])->name('duas.destroy');
 
 // Donation Module (Public)
-use App\Http\Controllers\DonationController;
 Route::get('/donations', [DonationController::class, 'index'])->name('donations.index');
 Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
 Route::get('/donations/thank-you', [DonationController::class, 'thankYou'])->name('donations.thank-you');
 Route::post('/donations/payment/callback', [DonationController::class, 'paymentCallback'])->name('donations.callback');
 
-// Donation Module (Admin)
-use App\Http\Controllers\AdminDonationController;
-Route::prefix('admin/donations')->name('admin.donations.')->group(function () {
-    Route::get('/', [AdminDonationController::class, 'index'])->name('index');
-    Route::get('/export', [AdminDonationController::class, 'export'])->name('export');
-    Route::get('/categories', [AdminDonationController::class, 'categories'])->name('categories');
-    Route::post('/categories', [AdminDonationController::class, 'storeCategory'])->name('categories.store');
-    Route::put('/categories/{category}', [AdminDonationController::class, 'updateCategory'])->name('categories.update');
-    Route::put('/categories/{category}/goal', [AdminDonationController::class, 'updateGoal'])->name('categories.update-goal');
-    Route::delete('/categories/{category}', [AdminDonationController::class, 'destroyCategory'])->name('categories.destroy');
+// Chatbot Module
+Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
+
+
+// --- AUTHENTICATION & USER ROUTES ---
+
+// Profile Routes (from Breeze) - Requires user to be logged in
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Chatbot Module
-use App\Http\Controllers\ChatbotController;
-Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
+
+// --- ADMIN-ONLY ROUTES ---
+
+// Requires user to be logged in AND be an admin
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    
+    // Admin Dashboard
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    // Your Original Admin Donation Routes (now protected)
+    Route::prefix('donations')->name('donations.')->group(function () {
+        Route::get('/', [AdminDonationController::class, 'index'])->name('index');
+        Route::get('/export', [AdminDonationController::class, 'export'])->name('export');
+        Route::get('/categories', [AdminDonationController::class, 'categories'])->name('categories');
+        Route::post('/categories', [AdminDonationController::class, 'storeCategory'])->name('categories.store');
+        Route::put('/categories/{category}', [AdminDonationController::class, 'updateCategory'])->name('categories.update');
+        Route::put('/categories/{category}/goal', [AdminDonationController::class, 'updateGoal'])->name('categories.update-goal');
+        Route::delete('/categories/{category}', [AdminDonationController::class, 'destroyCategory'])->name('categories.destroy');
+    });
+
+    // You can add more admin-only routes here in the future
+});
+
+
+// Auth Routes (Login, Register, Logout, etc. from Breeze)
+require __DIR__.'/auth.php';

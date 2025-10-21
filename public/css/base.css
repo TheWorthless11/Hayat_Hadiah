@@ -215,3 +215,78 @@ main {
         font-size: 1.25rem;
     }
 }
+/* =============================================== */
+/* == Breeze Navigation Override (Final Fix)    == */
+/* =============================================== */
+
+/*
+ * This targets the new Breeze navigation links and applies
+ * your original theme colors, hover effects, and the
+ * underline animation directly.
+*/
+
+
+/* --- LIGHT MODE --- */
+
+/* Style for all nav links, including the logo */
+nav .shrink-0 a,
+nav .hidden a.inline-flex {
+    color: hsl(30, 30%, 35%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; /* Needed for the ::after element */
+}
+
+/* Style for the hover effect */
+nav .shrink-0 a:hover,
+nav .hidden a.inline-flex:hover {
+    color: hsl(30, 40%, 30%);
+    transform: translateY(-3px);
+}
+
+/* Create the underline element (initially hidden) */
+nav .hidden a.inline-flex::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: hsl(30, 40%, 30%);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animate the underline on hover */
+nav .hidden a.inline-flex:hover::after {
+    width: 100%;
+}
+
+/* Style for the "active" link (the current page) */
+nav a.inline-flex[aria-current="page"] {
+    color: hsl(30, 40%, 30%) !important;
+    border-bottom: 2px solid hsl(30, 40%, 30%) !important;
+    transform: none; /* Don't move active link up */
+}
+
+
+/* --- DARK MODE --- */
+
+.dark nav .shrink-0 a,
+.dark nav .hidden a.inline-flex {
+    color: #e0f7fa;
+}
+
+.dark nav .shrink-0 a:hover,
+.dark nav .hidden a.inline-flex:hover {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Dark mode for the underline */
+.dark nav .hidden a.inline-flex::after {
+    background: #ffffff;
+}
+
+.dark nav a.inline-flex[aria-current="page"] {
+    color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+}

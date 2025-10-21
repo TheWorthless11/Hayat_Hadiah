@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/dua-styles.css') }}">
@@ -132,4 +132,4 @@ function escapeHtml(text){ const d=document.createElement('div'); d.textContent 
 // initial load
 loadDuas();
 </script>
-@endsection
+</x-app-layout>

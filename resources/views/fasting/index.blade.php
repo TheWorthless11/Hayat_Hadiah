@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/fasting-styles.css') }}">
@@ -137,4 +137,4 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     });
 })();
 </script>
-@endsection
+</x-app-layout>

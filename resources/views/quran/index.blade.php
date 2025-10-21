@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/quran-hadith-styles.css') }}">
@@ -190,4 +190,4 @@
         }
     });
 </script>
-@endsection
+</x-app-layout>

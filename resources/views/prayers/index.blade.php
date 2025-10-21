@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/prayer-styles.css') }}">
@@ -380,4 +380,4 @@
             document.getElementById('prayerForm').submit();
         }
     </script>
-@endsection
+</x-app-layout>

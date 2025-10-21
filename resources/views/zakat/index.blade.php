@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/zakat-styles.css') }}">
@@ -148,4 +148,4 @@ document.getElementById('calcBtn').addEventListener('click', async () => {
     document.getElementById('results').style.display = 'block';
 });
 </script>
-@endsection
+</x-app-layout>
