@@ -322,6 +322,24 @@
         // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', function() {
 
+                    // Read last Qibla location from cookie and pre-fill UI
+                    try {
+                        const last = getQiblaCookie();
+                        if (last && last.latitude && last.longitude) {
+                            currentLatitude = parseFloat(last.latitude);
+                            currentLongitude = parseFloat(last.longitude);
+                            if (last.label) document.getElementById('currentLocationName').textContent = last.label;
+                            document.getElementById('currentCoords').textContent = currentLatitude.toFixed(4) + ', ' + currentLongitude.toFixed(4);
+                            // Calculate qibla for stored coords
+                            calculateQibla(currentLatitude, currentLongitude);
+                            // Show save button so user can re-save/edit
+                            const sb = document.getElementById('saveBtn'); if (sb) sb.style.display = 'inline-flex';
+                        }
+                    } catch (e) {
+                        console.warn('Failed to read qibla cookie', e);
+                    }
+
+
             // Initialize device orientation if available
             if (window.DeviceOrientationEvent) {
                 window.addEventListener('deviceorientation', handleOrientation);
@@ -354,6 +372,11 @@
                     
                     // Get location name from reverse geocoding (optional)
                     await getLocationName(currentLatitude, currentLongitude);
+
+                    // Save last location to cookie (30 days)
+                    try {
+                        setQiblaCookie({ latitude: currentLatitude, longitude: currentLongitude, label: document.getElementById('currentLocationName').textContent || 'Current Location' }, 30);
+                    } catch (e) { console.warn('Failed to set qibla cookie', e); }
                     
                     btn.disabled = false;
                     btn.innerHTML = '<span class="btn-icon">📡</span> Detect My Location';
@@ -559,12 +582,40 @@
                     if (saveCity) saveCity.value = data.location.city || '';
                     if (saveCountry) saveCountry.value = data.location.country || '';
                     
+                    // Save last location to cookie (30 days)
+                    try {
+                        setQiblaCookie({ latitude: currentLatitude, longitude: currentLongitude, label: data.location.location_name || '' }, 30);
+                    } catch (e) { console.warn('Failed to set qibla cookie', e); }
+                    
                     alert('Location loaded successfully!');
                 }
             } catch (error) {
                 console.error('Error loading location:', error);
                 alert('Failed to load location');
             }
+        }
+
+        // Cookie helpers for qibla_last_location
+        function setQiblaCookie(obj, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days*24*60*60*1000));
+            const expires = "expires=" + d.toUTCString();
+            const value = encodeURIComponent(JSON.stringify(obj));
+            // Use SameSite=Lax and path=/; secure only if page served over HTTPS
+            const secureFlag = location.protocol === 'https:' ? '; Secure' : '';
+            document.cookie = `qibla_last_location=${value}; ${expires}; path=/; SameSite=Lax${secureFlag}`;
+        }
+
+        function getQiblaCookie() {
+            const name = 'qibla_last_location=';
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(name) === 0) {
+                    try { return JSON.parse(decodeURIComponent(c.substring(name.length))); } catch (e) { return null; }
+                }
+            }
+            return null;
         }
 
         // Delete saved location

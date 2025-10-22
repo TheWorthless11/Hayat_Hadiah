@@ -13,7 +13,11 @@
         <div class="controls">
             <div class="field">
                 <label>Month</label>
-                <input type="month" id="month" value="{{ $defaultMonth }}">
+                <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <button type="button" id="prevMonthBtn" class="btn-outline" title="Previous month">◀</button>
+                    <input type="month" id="month" value="{{ $defaultMonth }}">
+                    <button type="button" id="nextMonthBtn" class="btn-outline" title="Next month">▶</button>
+                </div>
             </div>
             <div class="field">
                 <label>Location</label>
@@ -123,6 +127,30 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
         tbody.appendChild(tr);
     });
 });
+
+// Prev/Next month navigation
+function changeMonth(offset) {
+    const el = document.getElementById('month');
+    if (!el) return;
+    const val = el.value; // format YYYY-MM
+    let year, month;
+    if (!val) {
+        const d = new Date(); year = d.getFullYear(); month = d.getMonth() + 1;
+    } else {
+        [year, month] = val.split('-').map(Number);
+    }
+    // offset can be positive or negative months
+    month += offset;
+    while (month > 12) { month -= 12; year += 1; }
+    while (month < 1) { month += 12; year -= 1; }
+    const mm = month.toString().padStart(2, '0');
+    el.value = `${year}-${mm}`;
+}
+
+const prevBtn = document.getElementById('prevMonthBtn');
+const nextBtn = document.getElementById('nextMonthBtn');
+if (prevBtn) prevBtn.addEventListener('click', () => changeMonth(-1));
+if (nextBtn) nextBtn.addEventListener('click', () => changeMonth(1));
 
 // Encourage native dropdowns to open downward by ensuring viewport space
 (() => {
